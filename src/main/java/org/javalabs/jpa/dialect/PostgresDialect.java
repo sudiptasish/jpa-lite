@@ -61,7 +61,7 @@ public class PostgresDialect extends AbstractDBDialect {
 
     @Override
     public String run_command(String sqlFile) {
-        return "-- psql -d ecmdb -U ecm -a -f " + sqlFile + " --";
+        return "-- psql -d testdb -U test -a -f " + sqlFile + " --";
     }
 
     @Override

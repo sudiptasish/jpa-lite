@@ -1,9 +1,5 @@
 package org.javalabs.jpa.query;
 
-import org.javalabs.jpa.query.UpdateExpr;
-import org.javalabs.jpa.query.DeleteExprVisitor;
-import org.javalabs.jpa.query.SBPoolImpl;
-import org.javalabs.jpa.query.QueryBuffer;
 import org.junit.jupiter.api.Test;
 
 public class DeleteExprVisitorTest {
@@ -12,7 +8,7 @@ public class DeleteExprVisitorTest {
     @Test
     public void testDeleteExpr() {
         DeleteExprVisitor delExpr = new DeleteExprVisitor();
-        UpdateExpr expr = new UpdateExpr(buff ,"ecm_database");
+        UpdateExpr expr = new UpdateExpr(buff ,"test_database");
         delExpr.visit(expr);
     }
 }

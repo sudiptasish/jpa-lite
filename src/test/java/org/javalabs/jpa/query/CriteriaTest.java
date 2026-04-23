@@ -1,6 +1,5 @@
 package org.javalabs.jpa.query;
 
-import org.javalabs.jpa.query.Criteria;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -52,11 +51,11 @@ public class CriteriaTest {
                 LOGGER.trace("Starting test case: testQuery1()");
             }
             Criteria criteria = new Criteria();
-            criteria.select("metadata_id", "aim_id", "project", "repo", "owner", "requester", "created_date", "status", "active", "repo_type")
+            criteria.select("app_id", "name", "location", "owner", "requester", "created_date", "status", "active", "repo_type")
                     .from("test_tab")
-                    .where("project").eq("sudiptasish")
-                    .and("repo").eq("ecm-example-config")
-                    .and("repo_type").in(Arrays.asList("STASH", "GITHUB"))
+                    .where("name").eq("sudiptasish")
+                    .and("location").eq("jpa-lite")
+                    .and("repo_type").in(Arrays.asList("STASH", "GITLAB"))
                     .and("active").eq("Y")
                     .and("status").in(Arrays.asList("SUCCESS", "FAILED"))
                     .orderBy("created_date")
@@ -86,11 +85,11 @@ public class CriteriaTest {
                 LOGGER.trace("Starting test case: testQuery2()");
             }
             Criteria criteria = new Criteria();
-            criteria.select("metadata_id", "aim_id", "project", "repo", "owner", "requester", "created_date", "status", "active", "repo_type")
+            criteria.select("employee_id", "emp_name", "salary")
                     .from("test_tab")
-                    .where("project").eq("sudiptasish")
-                    .and("repo").eq("ecm-example-config")
-                    .or("onboard_date").between("2015-08-01").and("2016-08-12")
+                    .where("name").eq("sudiptasish")
+                    .and("location").eq("jpa-lite")
+                    .or("joining_date").between("2015-08-01").and("2016-08-12")
                     .and("active").eq("Y")
                     .and("status").in(Arrays.asList("SUCCESS", "FAILED"))
                     .orderBy("created_date")
@@ -149,8 +148,8 @@ public class CriteriaTest {
             Criteria criteria = new Criteria();
             criteria.selectCount("*")
                     .from("test_tab")
-                    .where("project").eq("sudiptasish")
-                    .and("repo").eq("ecm-example-config");
+                    .where("name").eq("sudiptasish")
+                    .and("location").eq("jpa-lite");
                     
             String sql = criteria.toQuery();
 
@@ -176,7 +175,7 @@ public class CriteriaTest {
                 LOGGER.trace("Starting test case: testQuery5()");
             }
             Criteria criteria = new Criteria();
-            criteria.selectDistinct("aim_id")
+            criteria.selectDistinct("emp_id")
                     .from("test_tab");
                     
             String sql = criteria.toQuery();
@@ -203,9 +202,9 @@ public class CriteriaTest {
                 LOGGER.trace("Starting test case: testQuery6()");
             }
             Criteria criteria = new Criteria();
-            criteria.selectCountDistinct("project", "repo")
+            criteria.selectCountDistinct("name", "location")
                     .from("test_tab")
-                    .where("onboard_date").between("2015-08-01").and("2016-08-12")
+                    .where("joining_date").between("2015-08-01").and("2016-08-12")
                     .and("repo_type").in(Arrays.asList("GITLAB"));
                     
             String sql = criteria.toQuery();
@@ -232,9 +231,9 @@ public class CriteriaTest {
                 LOGGER.trace("Starting test case: testQuery7()");
             }
             Criteria criteria = new Criteria();
-            criteria.select("project", "repo", "COUNT(*)")
+            criteria.select("name", "location", "COUNT(*)")
                     .from("test_tab")
-                    .groupBy("project", "repo")
+                    .groupBy("name", "location")
                     .having("COUNT(*)").gt(1);
                     
             String sql = criteria.toQuery();
@@ -261,9 +260,9 @@ public class CriteriaTest {
                 LOGGER.trace("Starting test case: testQuery8()");
             }
             Criteria criteria = new Criteria();
-            criteria.select("project", "repo", "COUNT(*)")
+            criteria.select("name", "location", "COUNT(*)")
                     .from("test_tab")
-                    .groupBy("project", "repo")
+                    .groupBy("name", "location")
                     .having("COUNT(*)").between(1).and(10);
                     
             String sql = criteria.toQuery();
@@ -290,10 +289,10 @@ public class CriteriaTest {
                 LOGGER.trace("Starting test case: testQuery9()");
             }
             Criteria criteria = new Criteria();
-            criteria.select("project", "repo", "COUNT(*)")
+            criteria.select("name", "location", "COUNT(*)")
                     .from("test_tab")
-                    .groupBy("project", "repo")
-                    .orderBy("project", "repo");
+                    .groupBy("name", "location")
+                    .orderBy("name", "location");
                     
             String sql = criteria.toQuery();
 
@@ -319,11 +318,11 @@ public class CriteriaTest {
                 LOGGER.trace("Starting test case: testQuery10()");
             }
             Criteria criteria = new Criteria();
-            criteria.select("project", "repo", "COUNT(*)")
+            criteria.select("name", "location", "COUNT(*)")
                     .from("test_tab")
                     .where("total").lte(5)
-                    .groupBy("project", "repo")
-                    .orderBy("project", "repo");
+                    .groupBy("name", "location")
+                    .orderBy("name", "location");
                     
             String sql = criteria.toQuery();
 
@@ -351,13 +350,13 @@ public class CriteriaTest {
             Criteria criteria = new Criteria();
             criteria.with("tmp")
                     .as()
-                    .select("webhook_id", "branch", "config_file")
-                    .from("ecm_webhook_notifs")
+                    .select("webhook_id", "branch", "pom_file")
+                    .from("test_notifications")
                     .where("branch").eq("dev")
                     .doneWith()
-                    .select("webhook_id", "branch", "config_file")
+                    .select("id", "branch", "pom_file")
                     .from("tmp")
-                    .orderBy("webhook_id");
+                    .orderBy("id");
                     
             String sql = criteria.toQuery();
 
@@ -383,12 +382,12 @@ public class CriteriaTest {
                 LOGGER.trace("Starting test case: testQuery6()");
             }
             List<String> columnList = new ArrayList<>();
-            columnList.add("project");
-            columnList.add("repo");
+            columnList.add("name");
+            columnList.add("location");
             Criteria criteria = new Criteria();
             criteria.selectCountDistinct(columnList)
                     .from("test_tab")
-                    .where("onboard_date").between("2015-08-01").and("2016-08-12")
+                    .where("joining_date").between("2015-08-01").and("2016-08-12")
                     .and("repo_type").in(Arrays.asList("GITLAB"));
 
             String sql = criteria.toQuery();
@@ -415,14 +414,14 @@ public class CriteriaTest {
                 LOGGER.trace("Starting test case: testQuery1()");
             }
             Criteria criteria = new Criteria();
-            //"metadata_id", "aim_id", "project", "repo", "owner", "requester", "created_date", "status", "active", "repo_type"
+            //"employee_id", "emp_name", "salary"
             List<String> columnList = new ArrayList<>();
-            columnList.add("project");
-            columnList.add("repo");
+            columnList.add("name");
+            columnList.add("location");
             criteria.select(columnList)
                     .from("test_tab")
-                    .where("project").eq("sudiptasish")
-                    .and("repo").eq("ecm-example-config")
+                    .where("name").eq("sudiptasish")
+                    .and("location").eq("jpa-lite")
                     .and("repo_type").in(Arrays.asList("STASH", "GITHUB"))
                     .and("active").isNotNull()
                     .and("active").like("Y")
@@ -459,7 +458,7 @@ public class CriteriaTest {
             }
             Criteria criteria = new Criteria();
             List<String> columnList = new ArrayList<>();
-            columnList.add("aim_id");
+            columnList.add("emp_id");
             criteria.selectDistinct(columnList)
                     .from("test_tab");
 
@@ -485,7 +484,7 @@ public class CriteriaTest {
         Criteria criteria = new Criteria();
         IllegalArgumentException exception = Assertions.assertThrows(IllegalArgumentException.class, () -> {
             criteria.from("test_tab")
-                    .where("project").eq("sudiptasish");
+                    .where("name").eq("sudiptasish");
         });
         Assertions.assertEquals("Invalid query format. Specifying from without select clause", exception.getMessage());
     }
@@ -494,7 +493,7 @@ public class CriteriaTest {
     public void testInvalidQueryFormat2() {
         Criteria criteria = new Criteria();
         IllegalArgumentException exception = Assertions.assertThrows(IllegalArgumentException.class, () -> {
-            criteria.where("project").eq("sudiptasish");
+            criteria.where("name").eq("sudiptasish");
         });
         Assertions.assertEquals("Invalid query format. Specifying where without from clause", exception.getMessage());
     }
@@ -503,10 +502,10 @@ public class CriteriaTest {
     public void testInvalidQueryFormat3() {
         Criteria criteria = new Criteria();
         IllegalArgumentException exception = Assertions.assertThrows(IllegalArgumentException.class, () -> {
-            criteria.select("onboard_date")
+            criteria.select("joining_date")
                     .from("test_tab")
-                    .and("repo").eq("ecm-example-config")
-                    .or("onboard_date").between("2015-08-01").and("2016-08-12");
+                    .and("location").eq("jpa-lite")
+                    .or("joining_date").between("2015-08-01").and("2016-08-12");
         });
         Assertions.assertEquals("Invalid query format. Specifying and without where clause", exception.getMessage());
     }
@@ -515,9 +514,9 @@ public class CriteriaTest {
     public void testInvalidQueryFormat4() {
         Criteria criteria = new Criteria();
         IllegalArgumentException exception = Assertions.assertThrows(IllegalArgumentException.class, () -> {
-            criteria.select("onboard_date")
+            criteria.select("joining_date")
                     .from("test_tab")
-                    .or("onboard_date").between("2015-08-01").and("2016-08-12");
+                    .or("joining_date").between("2015-08-01").and("2016-08-12");
         });
         Assertions.assertEquals("Invalid query format. Specifying or without where clause", exception.getMessage());
     }
@@ -526,7 +525,7 @@ public class CriteriaTest {
     public void testInvalidQueryFormat5() {
         Criteria criteria = new Criteria();
         IllegalArgumentException exception = Assertions.assertThrows(IllegalArgumentException.class, () -> {
-            criteria.select("onboard_date")
+            criteria.select("joining_date")
                     .orderBy("created_date");
         });
         Assertions.assertEquals("Invalid query format. Specifying order by without from clause", exception.getMessage());
@@ -536,7 +535,7 @@ public class CriteriaTest {
     public void testInvalidQueryFormat6() {
         Criteria criteria = new Criteria();
         IllegalArgumentException exception = Assertions.assertThrows(IllegalArgumentException.class, () -> {
-            criteria.select("onboard_date")
+            criteria.select("joining_date")
                     .from("test_tab")
                     .desc();
         });
@@ -547,7 +546,7 @@ public class CriteriaTest {
     public void testInvalidQueryFormat7() {
         Criteria criteria = new Criteria();
         IllegalArgumentException exception = Assertions.assertThrows(IllegalArgumentException.class, () -> {
-            criteria.select("onboard_date")
+            criteria.select("joining_date")
                     .groupBy("created_date");
         });
         Assertions.assertEquals("Invalid query format. Specifying group by without from clause", exception.getMessage());
@@ -557,7 +556,7 @@ public class CriteriaTest {
     public void testInvalidQueryFormat8() {
         Criteria criteria = new Criteria();
         IllegalArgumentException exception = Assertions.assertThrows(IllegalArgumentException.class, () -> {
-            criteria.select("onboard_date")
+            criteria.select("joining_date")
                     .having("created_date");
         });
         Assertions.assertEquals("Invalid query format. Specifying having without group by clause", exception.getMessage());

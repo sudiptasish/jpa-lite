@@ -13,7 +13,7 @@
             <!--property name="jpa-lite.dialect" value="h2"/-->
             <property name="jpa-lite.entity.package" value="org.javalabs.jpa.model"/>
             
-            <property name="javax.persistence.jdbc.url" value="jdbc:h2:mem:ecmdb;DB_CLOSE_DELAY=-1"/>
+            <property name="javax.persistence.jdbc.url" value="jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1"/>
             <property name="javax.persistence.jdbc.user" value="jpa"/>
             <property name="javax.persistence.jdbc.password" value="lite"/>
             

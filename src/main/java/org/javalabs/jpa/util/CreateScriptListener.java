@@ -18,7 +18,7 @@ public class CreateScriptListener implements PostConstructListener {
     
     private static final Logger LOGGER = LoggerFactory.getLogger(CreateScriptListener.class);
     
-    private static final String DEFAULT_DB_URL = "jdbc:h2:mem:ecmdb;DB_CLOSE_DELAY=-1";
+    private static final String DEFAULT_DB_URL = "jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1";
 
     @Override
     public void callback(Properties props) {

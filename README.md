@@ -1132,7 +1132,7 @@ Open the script `test_schema.sql`, and voila you have the ddl script generated f
 test_schema.sql
 ```
 -- Run the below script to generate the tables --
--- psql -d ecmdb -U ecm -a -f /path/to/test_schema.sql --
+-- psql -d testdb -U test -a -f /path/to/test_schema.sql --
 
 -- Table Script --
 

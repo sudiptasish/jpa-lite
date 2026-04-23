@@ -1,6 +1,5 @@
 package org.javalabs.jpa.dialect;
 
-import org.javalabs.jpa.dialect.DerbyDialect;
 import org.javalabs.jpa.descriptor.ClassDescriptor;
 import org.javalabs.jpa.descriptor.PersistenceHandler;
 import org.javalabs.jpa.model.Employee;
@@ -12,7 +11,7 @@ public class DerbyDialectTest {
     public void testDataType() {
         DerbyDialect dialect = new DerbyDialect();
         dialect.data_type(Integer.class);
-        dialect.query_tables("ecm");
+        dialect.query_tables("test_tab");
         dialect.run_command("SELECT * FROM EMPLOYEE");
         dialect.timestamp();
         dialect.version();

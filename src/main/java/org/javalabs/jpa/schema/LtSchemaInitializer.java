@@ -107,18 +107,18 @@ public class LtSchemaInitializer {
                             em.getTransaction().commit();
 
                             if (LOGGER.isInfoEnabled()) {
-                                LOGGER.info("Created ecm metadata table. Update count: {}", i);
+                                LOGGER.info("Created db table. Update count: {}", i);
                             }
                         }
                         else {
-                            LOGGER.warn("Skipped ecm table creation, as they already exist in the DB");
+                            LOGGER.warn("Skipped db creation, as they already exist in the DB");
                         }
                     }
                     catch (RuntimeException e) {
                         if (em != null) {
                             em.getTransaction().rollback();
                         }
-                        LOGGER.error("Failed to create ecm metadata table", e);
+                        LOGGER.error("Failed to create db table", e);
                         throw e;
                     }
                     finally {

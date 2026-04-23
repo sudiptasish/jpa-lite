@@ -32,7 +32,7 @@ import java.util.Map;
  * 
  * <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
  * <persistence version="2.1">
- *     <persistence-unit name="ecm-pu">
+ *     <persistence-unit name="test-pu">
  *         <provider>org.javalabs.jpa.LitePersistenceProvider</provider>
  *         <properties>
  *             <property name="jpa-lite.dialect" value="org.javalabs.dialect.PostgresDialect"/>
@@ -40,8 +40,8 @@ import java.util.Map;
  *             ....
  *             ....
  *             <property name="javax.persistence.schema-generation.scripts.action" value="create"/>
- *             <property name="javax.persistence.schema-generation.scripts.create-target" value="ecm_schema.sql"/>
- *             <property name="javax.persistence.sql-load-script-source" value="ecm_user.sql"/>
+ *             <property name="javax.persistence.schema-generation.scripts.create-target" value="test_schema.sql"/>
+ *             <property name="javax.persistence.sql-load-script-source" value="test_user.sql"/>
  *             <property name="javax.persistence.schema-generation.create-database-schemas" value="true"/>
  *         </properties>
  *     </persistence-unit>
@@ -81,11 +81,11 @@ public class SchemaGenerator {
     }
     
     /**
-     * Generate the table script and index definition for ecm schema.
+     * Generate the table script and index definition for a schema.
      * 
      * <p>
      * This API will internally read the entity definition from <code>persistence.xml</code>
-     * file and generate the table script for ecm schema.
+     * file and generate the table script for the schema.
      * @param args
      */
     public static void generate(String[] args) {
@@ -207,7 +207,7 @@ public class SchemaGenerator {
     }
     
     /**
-     * Return the set of dialects currently supported by ecm.
+     * Return the set of dialects currently supported by jpa-lite.
      * @return String[]
      */
     private static String[] dialects() {

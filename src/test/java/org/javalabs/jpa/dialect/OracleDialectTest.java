@@ -1,6 +1,5 @@
 package org.javalabs.jpa.dialect;
 
-import org.javalabs.jpa.dialect.OracleDialect;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -9,7 +8,7 @@ public class OracleDialectTest {
     public void testDataType() {
         OracleDialect dialect = new OracleDialect();
         dialect.data_type(Integer.class);
-        dialect.query_tables("ecm");
+        dialect.query_tables("test_tab");
         dialect.run_command("SELECT * FROM EMPLOYEE");
         dialect.timestamp();
         dialect.version();

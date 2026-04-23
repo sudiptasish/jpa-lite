@@ -1,6 +1,5 @@
 package org.javalabs.jpa.dialect;
 
-import org.javalabs.jpa.dialect.SybaseDialect;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -9,7 +8,7 @@ public class SybaseDialectTest {
     public void testDataType() {
         SybaseDialect dialect = new SybaseDialect();
         dialect.data_type(Integer.class);
-        dialect.query_tables("ecm");
+        dialect.query_tables("test_tab");
         dialect.run_command("SELECT * FROM EMPLOYEE");
         dialect.timestamp();
         dialect.version();

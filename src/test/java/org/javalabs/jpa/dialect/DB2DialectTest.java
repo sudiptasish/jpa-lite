@@ -1,6 +1,5 @@
 package org.javalabs.jpa.dialect;
 
-import org.javalabs.jpa.dialect.DB2Dialect;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -9,7 +8,7 @@ public class DB2DialectTest {
     public void testDataType() {
         DB2Dialect dialect = new DB2Dialect();
         dialect.data_type(Integer.class);
-        dialect.query_tables("ecm");
+        dialect.query_tables("test_tab");
         dialect.run_command("SELECT * FROM EMPLOYEE");
         dialect.timestamp();
         dialect.version();

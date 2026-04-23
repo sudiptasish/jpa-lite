@@ -53,7 +53,7 @@ public class H2Dialect extends AbstractDBDialect {
 
     @Override
     public String run_command(String sqlFile) {
-        return "-- h2-script.sh -url jdbc:h2:tcp://localhost:9092/~/ecmdb -user ecm -password p@$$word -script " + sqlFile + " --";
+        return "-- h2-script.sh -url jdbc:h2:tcp://localhost:9092/~/testdb -user test -password test123 -script " + sqlFile + " --";
     }
 
     @Override

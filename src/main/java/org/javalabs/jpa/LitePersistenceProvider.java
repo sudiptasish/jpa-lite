@@ -154,7 +154,7 @@ public class LitePersistenceProvider implements PersistenceProvider {
     }
     
     /**
-     * Return the set of dialects currently supported by ecm.
+     * Return the set of dialects currently supported by jpa-lite.
      * @return String[]
      */
     private String[] dialects() {

@@ -240,14 +240,14 @@ public class EntityGenerator {
         buff.append(String.format("%-40s %s\n", "-w [--db-password] <db_password>", "Password of the database user"));
         buff.append(String.format("%-40s %s\n", "-t [--table-name] <sample_table>", "Pass the sample table name for testing purpose"));
         buff.append(String.format("%-40s %s\n", "-x [--exclude-prefix] <ex_prefix>", "Table name prefix that will be excluded while forming the final entity name."));
-        buff.append(String.format("%-40s %s\n", "", "[E.g., for prefix 'ecm_', ecm_jobs will be mapped to Job class. In normal scenario, it would be EcmJob]"));
+        buff.append(String.format("%-40s %s\n", "", "[E.g., for prefix 'folks_professionals', folks_ will be mapped to Professional class. In normal scenario, it would be EcmJob]"));
         buff.append(String.format("%-40s %s\n", "-v [--verbose]", "Verbose Output"));
         
         return buff.toString();
     }
     
     /**
-     * Return the set of dialects currently supported by ecm.
+     * Return the set of dialects currently supported by jpa-lite.
      * @return String[]
      */
     private static String[] dialects() {
