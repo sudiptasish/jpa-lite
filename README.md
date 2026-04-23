@@ -1,6 +1,6 @@
 # JPA-LiTE
 
-**JPA-LiTE** (`org.javalabs:jpa-lite`) is a lightweight Java Persistence API implementation purpose-built for high-throughput and batch processing workloads. It provides a developer-friendly abstraction over plain JDBC, eliminating boilerplate code while maintaining a significantly smaller memory footprint than mainstream JPA providers such as Hibernate and EclipseLink.
+**JPA-LiTE** (`org.javalabs.jpa:jpa-lite`) is a lightweight Java Persistence API implementation purpose-built for high-throughput and batch processing workloads. It provides a developer-friendly abstraction over plain JDBC, eliminating boilerplate code while maintaining a significantly smaller memory footprint than mainstream JPA providers such as Hibernate and EclipseLink.
 
 Unlike traditional JPA implementations, JPA-LiTE avoids the excessive creation of short-lived objects that leads to heap fragmentation and frequent garbage collection pauses. This makes it suitable for enterprise batch ingestion pipelines and any latency-sensitive Java application. It is framework-agnostic and works with Jakarta EE, Spring Boot, Vert.x, and plain Java SE.
 
@@ -8,9 +8,9 @@ Unlike traditional JPA implementations, JPA-LiTE avoids the excessive creation o
 
 ```xml
 <dependency>
-    <groupId>org.javalabs</groupId>
+    <groupId>org.javalabs.jpa</groupId>
     <artifactId>jpa-lite</artifactId>
-    <version>0.0.39</version>
+    <version>1.0.1</version>
 </dependency>
 ```
 
