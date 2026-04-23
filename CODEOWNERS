@@ -1,0 +1,37 @@
+# CODEOWNERS
+#
+# This file defines the individuals or teams responsible for code in this repository.
+# Code owners are automatically requested for review when someone opens a pull request
+# that modifies the code they own.
+#
+# For syntax reference, see:
+# https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners
+
+# Default owners for all files in the repository
+*   @amex-eng/ecm-team
+
+# Source code ownership
+src/                        @amex-eng/ecm-team
+
+# Test ownership
+src/test/                   @amex-eng/ecm-team
+
+# CI/CD workflows
+.github/                    @amex-eng/ecm-team
+
+# Documentation
+README.md                   @amex-eng/ecm-team
+CONTRIBUTING.md             @amex-eng/ecm-team
+CODEOWNERS                  @amex-eng/ecm-team
+
+# Build & packaging configuration
+pom.xml                     @amex-eng/ecm-team
+settings.xml                @amex-eng/ecm-team
+Jenkinsfile                 @amex-eng/ecm-team
+
+# Schema generation tool
+schema-gen                  @amex-eng/ecm-team
+
+# Libraries
+lib/                        @amex-eng/ecm-team
+

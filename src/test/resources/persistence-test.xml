@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<persistence version="2.0" xmlns="http://java.sun.com/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/persistence     http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd">
+    <persistence-unit name="jpa-pu">
+        <description>Test Persistence Unit</description>
+        <provider>org.javalabs.jpa.LitePersistenceProvider</provider>
+        <transaction-type>TEST_LOCAL</transaction-type>
+        
+        <class>org.javalabs.jpa.model.Employee</class>
+        
+        <shared-cache-mode>NONE</shared-cache-mode>
+        <properties>
+            <!--property name="jpa-lite.dialect" value="h2"/-->
+            <property name="jpa-lite.entity.package" value="org.javalabs.jpa.model"/>
+            
+            <property name="javax.persistence.jdbc.url" value="jdbc:h2:mem:ecmdb;DB_CLOSE_DELAY=-1"/>
+            <property name="javax.persistence.jdbc.user" value="jpa"/>
+            <property name="javax.persistence.jdbc.password" value="lite"/>
+            
+            <property name="jpa-lite.logging.level" value="TRACE"/>
+            <!--property name="jpa-lite.dao.package" value="org.javalabs.jpa.model"/-->
+        </properties>
+    </persistence-unit>
+</persistence>

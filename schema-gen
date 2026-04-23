@@ -1,0 +1,12 @@
+#!/bin/sh
+
+export BASE_DIR=/Users/schan280/Amex_Projects/github/jpa-lite
+
+export CLASSPATH=$BASE_DIR/target/jpa-lite-1.0.1.jar
+export CLASSPATH=$CLASSPATH:$BASE_DIR/lib/jakarta.persistence-api-4.0.0-M1.jar
+export CLASSPATH=$CLASSPATH:$BASE_DIR/lib/slf4j-api-2.0.16.jar
+
+export DEBUG_OPT="-Xdebug -Xnoagent -Xrunjdwp:transport=dt_socket,server=y,suspend=n,address=9792"
+
+java -classpath $CLASSPATH org.javalabs.jpa.schema.SchemaGenerator "$@"
+#java -Dpause $DEBUG_OPT -classpath $CLASSPATH org.javalabs.jpa.schema.SchemaGenerator "$@"

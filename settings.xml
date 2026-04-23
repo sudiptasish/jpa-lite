@@ -1,0 +1,21 @@
+<settings xmlns="http://maven.apache.org/SETTINGS/1.0.0">
+    <mirrors>
+        <mirror>
+            <id>iq-maven-central-proxy</id>
+            <url>https://artifactory.aexp.com/iq-maven-central-proxy</url>
+            <mirrorOf>central</mirrorOf>
+        </mirror>
+    </mirrors>
+    <servers>
+        <server>
+            <id>artifactory-corporate</id>
+            <username>${env.ARTIFACTORY_USERNAME}</username>
+            <password>${env.ARTIFACTORY_PASSWORD}</password>
+        </server>
+        <server>
+            <id>artifactory-snapshots</id>
+            <username>${env.ARTIFACTORY_USERNAME}</username>
+            <password>${env.ARTIFACTORY_PASSWORD}</password>
+        </server>
+    </servers>
+</settings>
