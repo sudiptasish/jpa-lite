@@ -24,9 +24,9 @@ public class CriteriaDeleteTest {
     public void testFrom() {
         CriteriaDelete criteria = new CriteriaDelete();
         criteria.delete();
-        criteria.from("ecm_metadata")
-                .where("project").eq("amex-eng")
-                .and("repo").eq("ecm-example-config")
+        criteria.from("test_tab")
+                .where("project").eq("sudiptasish")
+                .and("repo").eq("jpa-lite")
                 .and("repo_type").in(Arrays.asList("STASH", "GITHUB"))
                 .and("active").isNotNull()
                 .and("status").isNull();
@@ -36,8 +36,8 @@ public class CriteriaDeleteTest {
     public void testInvalidQueryFormat1() {
         CriteriaDelete criteria = new CriteriaDelete();
         IllegalArgumentException exception = Assertions.assertThrows(IllegalArgumentException.class, () -> {
-            criteria.from("ecm_metadata")
-                    .where("project").eq("amex-eng");
+            criteria.from("test_tab")
+                    .where("project").eq("sudiptasish");
         });
         Assertions.assertEquals("Invalid query format. Specifying FROM without DELETE clause", exception.getMessage());
     }
@@ -47,7 +47,7 @@ public class CriteriaDeleteTest {
         CriteriaDelete criteria = new CriteriaDelete();
         criteria.delete();
         IllegalArgumentException exception = Assertions.assertThrows(IllegalArgumentException.class, () -> {
-            criteria.where("project").eq("amex-eng");
+            criteria.where("project").eq("sudiptasish");
         });
         Assertions.assertEquals("Invalid query format. Specifying WHERE without FROM clause", exception.getMessage());
     }
@@ -56,9 +56,9 @@ public class CriteriaDeleteTest {
     public void testAnd() {
         CriteriaDelete criteria = new CriteriaDelete();
         criteria.delete();
-        criteria.from("ecm_metadata")
-                .where("project").eq("amex-eng")
-                .and("repo").eq("ecm-example-config")
+        criteria.from("test_tab")
+                .where("project").eq("sudiptasish")
+                .and("repo").eq("jpa-lite")
                 .or("onboard_date").between("2015-08-01").and("2016-08-12");
     }
 
@@ -67,8 +67,8 @@ public class CriteriaDeleteTest {
         CriteriaDelete criteria = new CriteriaDelete();
         criteria.delete();
         IllegalArgumentException exception = Assertions.assertThrows(IllegalArgumentException.class, () -> {
-            criteria.from("ecm_metadata")
-                    .and("repo").eq("ecm-example-config")
+            criteria.from("test_tab")
+                    .and("repo").eq("jpa-lite")
                     .or("onboard_date").between("2015-08-01").and("2016-08-12");
         });
         Assertions.assertEquals("Invalid query format. Specifying and without where clause", exception.getMessage());
@@ -79,7 +79,7 @@ public class CriteriaDeleteTest {
         CriteriaDelete criteria = new CriteriaDelete();
         criteria.delete();
         IllegalArgumentException exception = Assertions.assertThrows(IllegalArgumentException.class, () -> {
-            criteria.from("ecm_metadata")
+            criteria.from("test_tab")
                     .or("onboard_date").between("2015-08-01").and("2016-08-12");
         });
         Assertions.assertEquals("Invalid query format. Specifying or without where clause", exception.getMessage());
@@ -89,9 +89,9 @@ public class CriteriaDeleteTest {
     public void testQuery() {
             CriteriaDelete criteria = new CriteriaDelete();
             criteria.delete();
-             criteria.from("ecm_metadata")
-                    .where("project").eq("amex-eng")
-                    .and("repo").eq("ecm-example-config")
+             criteria.from("test_tab")
+                    .where("project").eq("sudiptasish")
+                    .and("repo").eq("jpa-lite")
                     .and("repo_type").in(Arrays.asList("STASH", "GITHUB"))
                     .and("active").isNotNull()
                     .and("active").like("Y")

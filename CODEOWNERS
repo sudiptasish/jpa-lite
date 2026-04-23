@@ -8,30 +8,28 @@
 # https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners
 
 # Default owners for all files in the repository
-*   @amex-eng/ecm-team
+*   sudiptasish chanda
 
 # Source code ownership
-src/                        @amex-eng/ecm-team
+src/                        sudiptasish
 
 # Test ownership
-src/test/                   @amex-eng/ecm-team
+src/test/                   sudiptasish
 
 # CI/CD workflows
-.github/                    @amex-eng/ecm-team
+.github/                    sudiptasish
 
 # Documentation
-README.md                   @amex-eng/ecm-team
-CONTRIBUTING.md             @amex-eng/ecm-team
-CODEOWNERS                  @amex-eng/ecm-team
+README.md                   sudiptasish
+CONTRIBUTING.md             sudiptasish
+CODEOWNERS                  sudiptasish
 
 # Build & packaging configuration
-pom.xml                     @amex-eng/ecm-team
-settings.xml                @amex-eng/ecm-team
-Jenkinsfile                 @amex-eng/ecm-team
+pom.xml                     sudiptasish
 
 # Schema generation tool
-schema-gen                  @amex-eng/ecm-team
+schema-gen                  sudiptasish
 
 # Libraries
-lib/                        @amex-eng/ecm-team
+lib/                        sudiptasish
 

@@ -53,8 +53,8 @@ public class CriteriaTest {
             }
             Criteria criteria = new Criteria();
             criteria.select("metadata_id", "aim_id", "project", "repo", "owner", "requester", "created_date", "status", "active", "repo_type")
-                    .from("ecm_metadata")
-                    .where("project").eq("amex-eng")
+                    .from("test_tab")
+                    .where("project").eq("sudiptasish")
                     .and("repo").eq("ecm-example-config")
                     .and("repo_type").in(Arrays.asList("STASH", "GITHUB"))
                     .and("active").eq("Y")
@@ -87,8 +87,8 @@ public class CriteriaTest {
             }
             Criteria criteria = new Criteria();
             criteria.select("metadata_id", "aim_id", "project", "repo", "owner", "requester", "created_date", "status", "active", "repo_type")
-                    .from("ecm_metadata")
-                    .where("project").eq("amex-eng")
+                    .from("test_tab")
+                    .where("project").eq("sudiptasish")
                     .and("repo").eq("ecm-example-config")
                     .or("onboard_date").between("2015-08-01").and("2016-08-12")
                     .and("active").eq("Y")
@@ -121,7 +121,7 @@ public class CriteriaTest {
             }
             Criteria criteria = new Criteria();
             criteria.selectCount("*")
-                    .from("ecm_metadata");
+                    .from("test_tab");
                     
             String sql = criteria.toQuery();
 
@@ -148,8 +148,8 @@ public class CriteriaTest {
             }
             Criteria criteria = new Criteria();
             criteria.selectCount("*")
-                    .from("ecm_metadata")
-                    .where("project").eq("amex-eng")
+                    .from("test_tab")
+                    .where("project").eq("sudiptasish")
                     .and("repo").eq("ecm-example-config");
                     
             String sql = criteria.toQuery();
@@ -177,7 +177,7 @@ public class CriteriaTest {
             }
             Criteria criteria = new Criteria();
             criteria.selectDistinct("aim_id")
-                    .from("ecm_metadata");
+                    .from("test_tab");
                     
             String sql = criteria.toQuery();
 
@@ -204,7 +204,7 @@ public class CriteriaTest {
             }
             Criteria criteria = new Criteria();
             criteria.selectCountDistinct("project", "repo")
-                    .from("ecm_metadata")
+                    .from("test_tab")
                     .where("onboard_date").between("2015-08-01").and("2016-08-12")
                     .and("repo_type").in(Arrays.asList("GITLAB"));
                     
@@ -233,7 +233,7 @@ public class CriteriaTest {
             }
             Criteria criteria = new Criteria();
             criteria.select("project", "repo", "COUNT(*)")
-                    .from("ecm_metadata")
+                    .from("test_tab")
                     .groupBy("project", "repo")
                     .having("COUNT(*)").gt(1);
                     
@@ -262,7 +262,7 @@ public class CriteriaTest {
             }
             Criteria criteria = new Criteria();
             criteria.select("project", "repo", "COUNT(*)")
-                    .from("ecm_metadata")
+                    .from("test_tab")
                     .groupBy("project", "repo")
                     .having("COUNT(*)").between(1).and(10);
                     
@@ -291,7 +291,7 @@ public class CriteriaTest {
             }
             Criteria criteria = new Criteria();
             criteria.select("project", "repo", "COUNT(*)")
-                    .from("ecm_metadata")
+                    .from("test_tab")
                     .groupBy("project", "repo")
                     .orderBy("project", "repo");
                     
@@ -320,7 +320,7 @@ public class CriteriaTest {
             }
             Criteria criteria = new Criteria();
             criteria.select("project", "repo", "COUNT(*)")
-                    .from("ecm_metadata")
+                    .from("test_tab")
                     .where("total").lte(5)
                     .groupBy("project", "repo")
                     .orderBy("project", "repo");
@@ -387,7 +387,7 @@ public class CriteriaTest {
             columnList.add("repo");
             Criteria criteria = new Criteria();
             criteria.selectCountDistinct(columnList)
-                    .from("ecm_metadata")
+                    .from("test_tab")
                     .where("onboard_date").between("2015-08-01").and("2016-08-12")
                     .and("repo_type").in(Arrays.asList("GITLAB"));
 
@@ -420,8 +420,8 @@ public class CriteriaTest {
             columnList.add("project");
             columnList.add("repo");
             criteria.select(columnList)
-                    .from("ecm_metadata")
-                    .where("project").eq("amex-eng")
+                    .from("test_tab")
+                    .where("project").eq("sudiptasish")
                     .and("repo").eq("ecm-example-config")
                     .and("repo_type").in(Arrays.asList("STASH", "GITHUB"))
                     .and("active").isNotNull()
@@ -461,7 +461,7 @@ public class CriteriaTest {
             List<String> columnList = new ArrayList<>();
             columnList.add("aim_id");
             criteria.selectDistinct(columnList)
-                    .from("ecm_metadata");
+                    .from("test_tab");
 
             String sql = criteria.toQuery();
 
@@ -484,8 +484,8 @@ public class CriteriaTest {
     public void testInvalidQueryFormat1() {
         Criteria criteria = new Criteria();
         IllegalArgumentException exception = Assertions.assertThrows(IllegalArgumentException.class, () -> {
-            criteria.from("ecm_metadata")
-                    .where("project").eq("amex-eng");
+            criteria.from("test_tab")
+                    .where("project").eq("sudiptasish");
         });
         Assertions.assertEquals("Invalid query format. Specifying from without select clause", exception.getMessage());
     }
@@ -494,7 +494,7 @@ public class CriteriaTest {
     public void testInvalidQueryFormat2() {
         Criteria criteria = new Criteria();
         IllegalArgumentException exception = Assertions.assertThrows(IllegalArgumentException.class, () -> {
-            criteria.where("project").eq("amex-eng");
+            criteria.where("project").eq("sudiptasish");
         });
         Assertions.assertEquals("Invalid query format. Specifying where without from clause", exception.getMessage());
     }
@@ -504,7 +504,7 @@ public class CriteriaTest {
         Criteria criteria = new Criteria();
         IllegalArgumentException exception = Assertions.assertThrows(IllegalArgumentException.class, () -> {
             criteria.select("onboard_date")
-                    .from("ecm_metadata")
+                    .from("test_tab")
                     .and("repo").eq("ecm-example-config")
                     .or("onboard_date").between("2015-08-01").and("2016-08-12");
         });
@@ -516,7 +516,7 @@ public class CriteriaTest {
         Criteria criteria = new Criteria();
         IllegalArgumentException exception = Assertions.assertThrows(IllegalArgumentException.class, () -> {
             criteria.select("onboard_date")
-                    .from("ecm_metadata")
+                    .from("test_tab")
                     .or("onboard_date").between("2015-08-01").and("2016-08-12");
         });
         Assertions.assertEquals("Invalid query format. Specifying or without where clause", exception.getMessage());
@@ -537,7 +537,7 @@ public class CriteriaTest {
         Criteria criteria = new Criteria();
         IllegalArgumentException exception = Assertions.assertThrows(IllegalArgumentException.class, () -> {
             criteria.select("onboard_date")
-                    .from("ecm_metadata")
+                    .from("test_tab")
                     .desc();
         });
         Assertions.assertEquals("Invalid query format. Specifying asc/desc without order by clause", exception.getMessage());
