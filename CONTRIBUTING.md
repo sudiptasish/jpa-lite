@@ -24,7 +24,7 @@ Thank you for your interest in contributing to **jpa-lite**! We welcome contribu
 
 ## Code of Conduct
 
-This project adheres to the [American Express Open Source Code of Conduct](https://github.com/americanexpress/code-of-conduct). By participating, you are expected to uphold this code. Please report unacceptable behavior to the repository maintainers.
+This project adheres to the [American Express Open Source Code of Conduct](https://docs.github.com/en/site-policy/github-terms/github-community-code-of-conduct). By participating, you are expected to uphold this code. Please report unacceptable behavior to the repository maintainers.
 
 ---
 
