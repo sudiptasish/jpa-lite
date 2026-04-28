@@ -23,6 +23,7 @@ import jakarta.xml.bind.annotation.XmlValue;
  *       &lt;attribute name="updatable" type="{http://www.w3.org/2001/XMLSchema}string" /&gt;
  *       &lt;attribute name="precision" type="{http://www.w3.org/2001/XMLSchema}byte" /&gt;
  *       &lt;attribute name="scale" type="{http://www.w3.org/2001/XMLSchema}byte" /&gt;
+ *       &lt;attribute name="check" type="{http://www.w3.org/2001/XMLSchema}string" /&gt;
  *     &lt;/extension&gt;
  *   &lt;/simpleContent&gt;
  * &lt;/complexType&gt;
@@ -59,6 +60,9 @@ public class ColumnType {
     
     @XmlAttribute(name = "scale")
     protected Integer scale;
+    
+    @XmlAttribute(name = "check")
+    protected String check;
 
     /**
      * Gets the value of the value property.
@@ -250,6 +254,30 @@ public class ColumnType {
      */
     public void setScale(Integer value) {
         this.scale = value;
+    }
+
+    /**
+     * Gets the value of the check property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getCheck() {
+        return check;
+    }
+
+    /**
+     * Sets the value of the check property.
+     * 
+     * @param check
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setCheck(String check) {
+        this.check = check;
     }
 
 }

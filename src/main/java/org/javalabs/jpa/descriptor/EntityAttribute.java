@@ -82,6 +82,12 @@ public interface EntityAttribute {
     boolean nullable();
     
     /**
+     * Return the check constraint of this column.
+     * @return String
+     */
+    String check();
+    
+    /**
      * Return the column length.
      * @return int
      */

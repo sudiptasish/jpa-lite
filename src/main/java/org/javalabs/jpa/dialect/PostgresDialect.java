@@ -9,6 +9,7 @@ import jakarta.persistence.EntityManager;
 import jakarta.persistence.Index;
 import jakarta.persistence.TypedQuery;
 import java.math.BigDecimal;
+import java.math.BigInteger;
 import java.sql.Date;
 import java.sql.Time;
 import java.sql.Timestamp;
@@ -16,6 +17,7 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import org.javalabs.jpa.dialect.postgres.ConstraintMetadata;
 
 /**
  *
@@ -28,10 +30,12 @@ public class PostgresDialect extends AbstractDBDialect {
     static {
         DATATYPE_MAPPING.put(byte[].class, "BYTEA");
         DATATYPE_MAPPING.put(String.class, "VARCHAR");
+        DATATYPE_MAPPING.put(StringBuilder.class, "TEXT");
         DATATYPE_MAPPING.put(Boolean.class, "SMALLINT");
         DATATYPE_MAPPING.put(Byte.class, "SMALLINT");
         DATATYPE_MAPPING.put(Short.class, "INT");
         DATATYPE_MAPPING.put(Integer.class, "INT");
+        DATATYPE_MAPPING.put(BigInteger.class, "BIGINT");
         DATATYPE_MAPPING.put(Long.class, "BIGINT");
         DATATYPE_MAPPING.put(Float.class, "NUMERIC(10, 2)");
         DATATYPE_MAPPING.put(Double.class, "NUMERIC(10, 2)");
@@ -145,6 +149,7 @@ public class PostgresDialect extends AbstractDBDialect {
             List<ColumnMetadata> columns = query.getResultList();
             tableMD.setColumns(columns);
             
+            // Retrieve the primary key column details
             query = em.createNativeQuery(
                     "\n  SELECT b.*"
                     + "\n  FROM information_schema.table_constraints a"
@@ -168,6 +173,33 @@ public class PostgresDialect extends AbstractDBDialect {
             
             List<PrimaryKeyMetadata> pkColumns = query.getResultList();
             tableMD.setPkColumns(pkColumns);
+            
+            // Retrieve the check constraint column details
+            query = em.createNativeQuery("""
+                    SELECT a.table_name, a.constraint_name, a.constraint_type, c.column_name, b.check_clause
+                      FROM information_schema.table_constraints a
+                     INNER JOIN information_schema.check_constraints b ON (
+                               a.constraint_catalog = b.constraint_catalog
+                           AND a.constraint_schema = b.constraint_schema
+                           AND a.constraint_name = b.constraint_name
+                           AND a.constraint_type = ?
+                           AND b.check_clause NOT LIKE ?)
+                     INNER JOIN information_schema.constraint_column_usage c ON (
+                               b.constraint_catalog = c.table_catalog
+                           AND b.constraint_schema = c.table_schema
+                           AND b.constraint_name = c.constraint_name
+                           AND c.table_name = ?)
+                     WHERE a.constraint_catalog = ?
+                       AND a.constraint_schema = ?""", ConstraintMetadata.class);
+            
+            query.setParameter(1, "CHECK");
+            query.setParameter(2, "%IS NOT NULL");
+            query.setParameter(3, tableMD.getTableName());
+            query.setParameter(4, dbName);
+            query.setParameter(5, schema);
+            
+            List<ConstraintMetadata> checkColumns = query.getResultList();
+            tableMD.setCheckColumns(checkColumns);
         }
         // Convert to orm entity types.
         return new PGJaxbOrmBridge().covertToXml(tables, props);
@@ -175,6 +207,6 @@ public class PostgresDialect extends AbstractDBDialect {
 
     @Override
     public List<Class<?>> metadataClasses() {
-        return Arrays.asList(TableMetadata.class, ColumnMetadata.class, PrimaryKeyMetadata.class);
+        return Arrays.asList(TableMetadata.class, ColumnMetadata.class, PrimaryKeyMetadata.class, ConstraintMetadata.class);
     }
 }

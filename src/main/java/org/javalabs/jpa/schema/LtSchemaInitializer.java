@@ -178,33 +178,42 @@ public class LtSchemaInitializer {
         buff.append("\n\n");
         String sql = "";
 
-        for (Class<?> entity : PersistenceHandler.get().entities()) {
-            sql = sqlDialect.primary_key(PersistenceHandler.get().getDescriptor(entity));
-            if (sql.length() > 0) {
-                buff.append(sql);
-                buff.append("\n\n");
+        for (Class<?> entity : entities) {
+            ClassDescriptor desc = PersistenceHandler.get().getDescriptor(entity);
+            if (desc != null) {
+                sql = sqlDialect.primary_key(desc);
+                if (sql.length() > 0) {
+                    buff.append(sql);
+                    buff.append("\n\n");
+                }
             }
         }
 
         // Create the foreign key script.
         buff.append("-- Foreign Key Constraint --");
         buff.append("\n\n");
-        for (Class<?> entity : PersistenceHandler.get().entities()) {
-            sql = sqlDialect.foreign_key(PersistenceHandler.get().getDescriptor(entity));
-            if (sql.length() > 0) {
-                buff.append(sql);
-                buff.append("\n\n");
+        for (Class<?> entity : entities) {
+            ClassDescriptor desc = PersistenceHandler.get().getDescriptor(entity);
+            if (desc != null) {
+                sql = sqlDialect.foreign_key(desc);
+                if (sql.length() > 0) {
+                    buff.append(sql);
+                    buff.append("\n\n");
+                }
             }
         }
 
         // Create the index script.
         buff.append("-- Indexes --");
         buff.append("\n\n");
-        for (Class<?> entity : PersistenceHandler.get().entities()) {
-            sql = sqlDialect.index(PersistenceHandler.get().getDescriptor(entity));
-            if (sql.length() > 0) {
-                buff.append(sql);
-                buff.append("\n\n");
+        for (Class<?> entity : entities) {
+            ClassDescriptor desc = PersistenceHandler.get().getDescriptor(entity);
+            if (desc != null) {
+                sql = sqlDialect.index(desc);
+                if (sql.length() > 0) {
+                    buff.append(sql);
+                    buff.append("\n\n");
+                }
             }
         }
         

@@ -19,11 +19,14 @@ import java.io.IOException;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.sql.Date;
+import java.sql.Time;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  *
@@ -66,7 +69,7 @@ public class PGJaxbOrmBridge {
             
             // Add named-native-query
             NamedNativeQueryType nnQuery = new NamedNativeQueryType();
-            nnQuery.setName(ormEntity.getClazz()+ ".selectAll");
+            nnQuery.setName(singular(tempTab) + ".selectAll");
             nnQuery.setQuery("SELECT * FROM " + tableMD.getTableName());
             
             NamedNativeQueriesType nnQueries = new NamedNativeQueriesType();
@@ -123,6 +126,36 @@ public class PGJaxbOrmBridge {
                 col.setUpdatable(Boolean.toString("YES".equalsIgnoreCase(colMD.getIsUpdatable())));
                 
                 setColumnType(colMD, basic, col);
+                
+                // Populate the check constraint ...
+                for (ConstraintMetadata cns : tableMD.getCheckColumns()) {
+                    if (cns.getTableName().equals(tableMD.getTableName()) && cns.getColumnName().equals(colMD.getColumnName())) {
+                        // Decrypt the checkClause attribute to form the sql check constraint clause.
+                        // E.g., ((role)::text = ANY ((ARRAY['CUSTOMER'::character varying, 'PROFESSIONAL'::character varying, 'ADMIN'::character varying])::text[]))
+                        //       ==> CHECK (role IN ('CUSTOMER', 'PROFESSIONAL', 'ADMIN'))
+                        
+                        String regExp = "ARRAY\\[(.*?)\\]";
+                        Pattern pattern = Pattern.compile(regExp);
+                        Matcher matcher = pattern.matcher(cns.getCheckClause());
+                        if (matcher.find()) {
+                            String fullMatch = matcher.group(0);        // ARRAY[...]
+                            String innerContent = matcher.group(1);     // inside the brackets
+
+                            String[] arr = innerContent.split(",");
+                            String[] rs = new String[arr.length];
+                            
+                            for (int i = 0; i < arr.length; i ++) {
+                                rs[i] = arr[i].split("::")[0].trim();
+                                if (rs[i].charAt(0) == '(' && rs[i].charAt(rs[i].length() - 1) == ')') {
+                                    rs[i] = rs[i].substring(1, rs[i].length() - 1);
+                                }
+                            }
+                            col.setCheck(col.getName() + " IN " + "(" + String.join(", ", rs) + ")");
+                            basic.setType(Enum.class.getName());
+                        }
+                    }
+                }
+            
                 basic.setColumn(col);
                 basicFields.add(basic);
             }
@@ -168,13 +201,13 @@ public class PGJaxbOrmBridge {
         if (colMD.getDataType().equalsIgnoreCase("smallint")) {
             id.setType(Short.class.getName());
             col.setPrecision(colMD.getNumericPrecision());
-
         }
-        else if (colMD.getDataType().equalsIgnoreCase("integer")) {
+        else if (colMD.getDataType().equalsIgnoreCase("integer") || colMD.getDataType().equalsIgnoreCase("int")) {
             id.setType(Integer.class.getName());
             col.setPrecision(colMD.getNumericPrecision());
         }
         else if (colMD.getDataType().equalsIgnoreCase("bigint")) {
+            //id.setType(BigInteger.class.getName());
             id.setType(Long.class.getName());
             col.setPrecision(colMD.getNumericPrecision());
         }
@@ -188,7 +221,7 @@ public class PGJaxbOrmBridge {
             col.setPrecision(colMD.getNumericPrecision());
             col.setScale(colMD.getNumericScale());
         }
-        else if (colMD.getDataType().equalsIgnoreCase("character varying")) {
+        else if (colMD.getDataType().equalsIgnoreCase("character varying") || colMD.getDataType().equalsIgnoreCase("varchar")) {
             id.setType(String.class.getName());
             col.setLength(colMD.getCharacterMaximumLength());
         }
@@ -198,11 +231,15 @@ public class PGJaxbOrmBridge {
         else if (colMD.getDataType().equalsIgnoreCase("timestamp without time zone")) {
             id.setType(Timestamp.class.getName());
         }
+        else if (colMD.getDataType().equalsIgnoreCase("time without time zone")) {
+            id.setType(Time.class.getName());
+        }
         else if (colMD.getDataType().equalsIgnoreCase("bytea")) {
             id.setType(byte[].class.getName());
         }
         else if (colMD.getDataType().equalsIgnoreCase("text")) {
             id.setType(String.class.getName());
+            col.setLength(1000000000);
         }
         else if (colMD.getDataType().equalsIgnoreCase("ARRAY")) {
             id.setType(String[].class.getName());
@@ -220,14 +257,13 @@ public class PGJaxbOrmBridge {
         if (colMD.getDataType().equalsIgnoreCase("smallint")) {
             basic.setType(Short.class.getName());
             col.setPrecision(colMD.getNumericPrecision());
-
         }
-        else if (colMD.getDataType().equalsIgnoreCase("integer")) {
+        else if (colMD.getDataType().equalsIgnoreCase("integer") || colMD.getDataType().equalsIgnoreCase("int")) {
             basic.setType(Integer.class.getName());
             col.setPrecision(colMD.getNumericPrecision());
         }
         else if (colMD.getDataType().equalsIgnoreCase("bigint")) {
-            basic.setType(Long.class.getName());
+            basic.setType(BigInteger.class.getName());
             col.setPrecision(colMD.getNumericPrecision());
         }
         else if (colMD.getDataType().equalsIgnoreCase("numeric")) {
@@ -240,7 +276,7 @@ public class PGJaxbOrmBridge {
             col.setPrecision(colMD.getNumericPrecision());
             col.setScale(colMD.getNumericScale());
         }
-        else if (colMD.getDataType().equalsIgnoreCase("character varying")) {
+        else if (colMD.getDataType().equalsIgnoreCase("character varying") || colMD.getDataType().equalsIgnoreCase("varchar")) {
             basic.setType(String.class.getName());
             col.setLength(colMD.getCharacterMaximumLength());
         }
@@ -250,12 +286,15 @@ public class PGJaxbOrmBridge {
         else if (colMD.getDataType().equalsIgnoreCase("timestamp without time zone")) {
             basic.setType(Timestamp.class.getName());
         }
+        else if (colMD.getDataType().equalsIgnoreCase("time without time zone")) {
+            basic.setType(Time.class.getName());
+        }
         else if (colMD.getDataType().equalsIgnoreCase("bytea")) {
             basic.setType(byte[].class.getName());
         }
         else if (colMD.getDataType().equalsIgnoreCase("text")) {
             basic.setType(String.class.getName());
-            col.setLength(Integer.MAX_VALUE / 2);
+            col.setLength(1000000000);
         }
         else if (colMD.getDataType().equalsIgnoreCase("ARRAY")) {
             basic.setType(String[].class.getName());

@@ -1,6 +1,5 @@
 package org.javalabs.jpa.query;
 
-import org.javalabs.jpa.query.OneToManyBinder;
 import org.javalabs.jpa.descriptor.PersistenceHandler;
 import org.javalabs.jpa.descriptor.RelAttribute;
 import org.javalabs.jpa.model.Department;
@@ -136,6 +135,11 @@ public class OneToManyBinderTest {
 
             @Override
             public EnumType enumType() {
+                return null;
+            }
+
+            @Override
+            public String check() {
                 return null;
             }
         };

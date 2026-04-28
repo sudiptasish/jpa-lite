@@ -56,6 +56,9 @@ public class TableMetadata {
     
     @Transient
     private List<PrimaryKeyMetadata> pkColumns = new ArrayList<>();
+    
+    @Transient
+    private List<ConstraintMetadata> checkColumns = new ArrayList<>();
 
     public String getTableCatalog() {
         return tableCatalog;
@@ -171,5 +174,15 @@ public class TableMetadata {
     @Transient
     public void setPkColumns(List<PrimaryKeyMetadata> pkColumns) {
         this.pkColumns = pkColumns;
+    }
+
+    @Transient
+    public List<ConstraintMetadata> getCheckColumns() {
+        return checkColumns;
+    }
+
+    @Transient
+    public void setCheckColumns(List<ConstraintMetadata> checkColumns) {
+        this.checkColumns = checkColumns;
     }
 }

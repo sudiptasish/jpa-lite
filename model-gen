@@ -1,8 +1,8 @@
 #!/bin/sh
 
-# Example: sh model-gen -j $HOME/NetBeansProjects/csu-app -k org.javalabs.entity -d postgres -h localhost -p 5432 -n <db_name> -s public -u <user_name> -w p\@\$\$word -x <table_prefix>
+# Example: sh model-gen -j $HOME/temp/folks-app -k io.opns.app -d postgres -h localhost -p 5432 -n ecmdb -s public -u test -w p\@\$\$word -x fks_
 
-export BASE_DIR=$HOME/Amex_Projects/github/jpa-lite
+export BASE_DIR=$HOME/Projects/jpa-lite
 
 export CLASSPATH=$BASE_DIR/target/jpa-lite-1.0.1.jar
 export CLASSPATH=$CLASSPATH:$BASE_DIR/lib/jakarta.persistence-api-4.0.0-M1.jar
@@ -21,5 +21,5 @@ export CLASSPATH=$CLASSPATH:$HOME/.m2/repository/org/javalabs/decl/decl-util/2.0
 export DEBUG_OPT="-Xdebug -Xnoagent -Xrunjdwp:transport=dt_socket,server=y,suspend=n,address=9792"
 export JAVA_OPTS="-Dorg.slf4j.simpleLogger.defaultLogLevel=TRACE"
 
-java -classpath $CLASSPATH org.javalabs.jpa.entity.EntityGenerator "$@"
-#java -Dpause $DEBUG_OPT $JAVA_OPTS -classpath $CLASSPATH org.javalabs.jpa.entity.EntityGenerator "$@"
+#java -classpath $CLASSPATH org.javalabs.jpa.entity.EntityGenerator "$@"
+java -Dpause $DEBUG_OPT $JAVA_OPTS -classpath $CLASSPATH org.javalabs.jpa.entity.EntityGenerator "$@"

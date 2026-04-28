@@ -1,5 +1,6 @@
 package org.javalabs.jpa.descriptor;
 
+import jakarta.persistence.CheckConstraint;
 import jakarta.persistence.Column;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
@@ -29,6 +30,7 @@ public class EntityAttributeImpl implements EntityAttribute {
     private GenerationType genType = GenerationType.AUTO;
     private boolean updatable = true;
     private boolean nullable = true;
+    private String check;
     private int length = -1;
     private boolean trans = false;
     private boolean enumerated = false;
@@ -84,6 +86,10 @@ public class EntityAttributeImpl implements EntityAttribute {
             nullable = colAnnotation.nullable();
             if (datatype == String.class) {
                 length = colAnnotation.length();
+            }
+            CheckConstraint[] checks = colAnnotation.check();
+            if (checks != null && checks.length > 0) {
+                check = "CHECK (" + checks[0].constraint() + ")";
             }
         }
         
@@ -162,6 +168,11 @@ public class EntityAttributeImpl implements EntityAttribute {
     @Override
     public boolean nullable() {
         return nullable;
+    }
+
+    @Override
+    public String check() {
+        return check;
     }
 
     @Override

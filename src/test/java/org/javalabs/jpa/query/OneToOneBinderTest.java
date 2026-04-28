@@ -123,6 +123,11 @@ public class OneToOneBinderTest {
             public EnumType enumType() {
                 return null;
             }
+
+            @Override
+            public String check() {
+                throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+            }
         };
 
         List<Object> children = new ArrayList<>();

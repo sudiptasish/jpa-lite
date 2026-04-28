@@ -2,6 +2,7 @@ package org.javalabs.jpa.dialect;
 
 import jakarta.persistence.EntityManager;
 import java.math.BigDecimal;
+import java.math.BigInteger;
 import java.sql.Date;
 import java.sql.Time;
 import java.sql.Timestamp;
@@ -20,10 +21,12 @@ public class H2Dialect extends AbstractDBDialect {
     static {
         DATATYPE_MAPPING.put(byte[].class, "BLOB");
         DATATYPE_MAPPING.put(String.class, "VARCHAR");
+        DATATYPE_MAPPING.put(StringBuilder.class, "TEXT");
         DATATYPE_MAPPING.put(Boolean.class, "SMALLINT");
         DATATYPE_MAPPING.put(Byte.class, "SMALLINT");
         DATATYPE_MAPPING.put(Short.class, "INT");
         DATATYPE_MAPPING.put(Integer.class, "INT");
+        DATATYPE_MAPPING.put(BigInteger.class, "BIGINT");
         DATATYPE_MAPPING.put(Long.class, "BIGINT");
         DATATYPE_MAPPING.put(Float.class, "NUMERIC(10, 2)");
         DATATYPE_MAPPING.put(Double.class, "NUMERIC(10, 2)");
