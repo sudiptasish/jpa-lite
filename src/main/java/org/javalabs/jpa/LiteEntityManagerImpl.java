@@ -33,8 +33,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 /**
  * Concrete class to represent a LiTE entity manager.
@@ -42,8 +40,6 @@ import org.slf4j.LoggerFactory;
  * @author Sudiptasish Chanda
  */
 public class LiteEntityManagerImpl implements LiteEntityManager {
-    
-    private static final Logger LOGGER = LoggerFactory.getLogger(LiteEntityManagerImpl.class);
     
     private final LiteEntityManagerFactory emf;
     
@@ -105,7 +101,7 @@ public class LiteEntityManagerImpl implements LiteEntityManager {
     @Override
     public int getBatchSize() {
         try {
-            return Integer.valueOf((String)properties.get("jpa-lite.jdbc.batch.size"));
+            return Integer.parseInt((String)properties.get("jpa-lite.jdbc.batch.size"));
         }
         catch (RuntimeException e) {
             return DEFAULT_BATCH_SIZE;
@@ -115,7 +111,7 @@ public class LiteEntityManagerImpl implements LiteEntityManager {
     @Override
     public int getFetchSize() {
         try {
-            return Integer.valueOf((String)properties.get("jpa-lite.jdbc.fetch.size"));
+            return Integer.parseInt((String)properties.get("jpa-lite.jdbc.fetch.size"));
         }
         catch (RuntimeException e) {
             return DEFAULT_FETCH_SIZE;

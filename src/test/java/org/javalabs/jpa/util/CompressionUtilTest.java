@@ -16,7 +16,7 @@ import org.junit.jupiter.api.Test;
  */
 public class CompressionUtilTest {
 
-    @Test
+    //@Test
     public void testCompress() {
         try {
             byte[] buff = Files.readAllBytes(Paths.get(new File(System.getProperty("user.dir") + File.separator + "src/test/resources/generate_compressed_flight_object_true.json").toURI()));

@@ -64,12 +64,13 @@ public class PGJaxbOrmBridge {
                 }
             }
             // Setup the entity class.
-            ormEntity.setClazz(pkgName + "." + singular(tempTab));
-            ormEntity.setName(singular(tempTab));
+            String singular = CharUtil.singular(tempTab);
+            ormEntity.setClazz(pkgName + "." + singular);
+            ormEntity.setName(singular);
             
             // Add named-native-query
             NamedNativeQueryType nnQuery = new NamedNativeQueryType();
-            nnQuery.setName(singular(tempTab) + ".selectAll");
+            nnQuery.setName(singular + ".selectAll");
             nnQuery.setQuery("SELECT * FROM " + tableMD.getTableName());
             
             NamedNativeQueriesType nnQueries = new NamedNativeQueriesType();
@@ -184,17 +185,6 @@ public class PGJaxbOrmBridge {
         catch (IOException | JAXBException e) {
             throw new RuntimeException(e);
         }
-    }
-    
-    public String singular(String name) {
-        String ret = CharUtil.toCapitalisedCamelCase(name);
-        if (ret.endsWith("ies")) {
-            ret = ret.substring(0, ret.length() - 3) + "y";
-        }
-        else if (ret.endsWith("s")) {
-            ret = ret.substring(0, ret.length() - 1);
-        }
-        return ret;
     }
     
     public void setColumnType(ColumnMetadata colMD, IdType id, ColumnType col) {

@@ -11,27 +11,14 @@ import java.util.Map;
  */
 public class LtModelInitializer {
     
-    private static final String NEW_LINE      = "\n";
-    private static final String TAB           = "    ";
-    private static final String SPACE         = " ";
-    private static final String SEMICOLON     = ";";
-    private static final String NATIVE_QUERY_FORMAT = "(name = \"{0}\", query = \"{1}\")";
-    
-    private final CommentGenHelper commentGen = new CommentGenHelper();
-    private final FieldGenHelper fieldGen = new FieldGenHelper();
-    private final ConstructorGenHelper constructorGen = new ConstructorGenHelper();
-    private final MethodGenHelper methodGen = new MethodGenHelper();
-    private final HashCodeGenHelper hashGen = new HashCodeGenHelper();
-    private final EqualsGenHelper equalsGen = new EqualsGenHelper();
-    
     public Map<String, String> generateModels(String ormXml) {
         try {
             Class<?> clazz = Class.forName("org.javalabs.decl.gen.JaxbJpaConverterBridge");
             Constructor cons = clazz.getDeclaredConstructor(new Class[] {});
-            Object obj = cons.newInstance(new String[] {});
+            Object obj = cons.newInstance((Object) new String[] {});
             
             Method method = clazz.getDeclaredMethod("toRawClass", new Class[] {String.class});
-            return (Map<String, String>)method.invoke(obj, new String[] {ormXml});
+            return (Map<String, String>)method.invoke(obj, (Object) new String[] {ormXml});
             
         }
         catch (ClassNotFoundException | NoSuchMethodException | InstantiationException

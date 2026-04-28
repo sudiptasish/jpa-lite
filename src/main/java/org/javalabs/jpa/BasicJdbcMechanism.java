@@ -42,10 +42,10 @@ public class BasicJdbcMechanism implements QueryMechanism {
             // Convert boolean to integer. (True -> 1, False -> 0)
             type = Integer.class;
             if (bind == null) {
-                val = new Integer(0);
+                val = 0;
             }
             else {
-                val = ((Boolean)val) ? new Integer(1) : new Integer(0);
+                val = ((Boolean)val) ? 1 : 0;
             }
         }
         prepare(pStmt, bindIndex, type, val);
