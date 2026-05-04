@@ -51,6 +51,7 @@ public class H2Dialect extends AbstractDBDialect {
 
     @Override
     public String db_url(String host, String port, String db) {
+        //     "jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1"
         return "jdbc:h2:tcp://" + host + ":" + port + "/~/" + db;
     }
 

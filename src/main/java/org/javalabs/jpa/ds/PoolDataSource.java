@@ -1,4 +1,4 @@
-package org.javalabs.jpa.util;
+package org.javalabs.jpa.ds;
 
 import java.sql.Connection;
 import java.sql.SQLException;

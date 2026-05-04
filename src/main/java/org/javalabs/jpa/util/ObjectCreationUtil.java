@@ -1,7 +1,6 @@
 package org.javalabs.jpa.util;
 
 import java.lang.reflect.Constructor;
-import java.lang.reflect.InvocationTargetException;
 
 /**
  *
@@ -34,11 +33,10 @@ public class ObjectCreationUtil {
             T obj = constructor.newInstance(new Object[] {});
             return obj;
         }
-        catch (NoSuchMethodException
-            | InstantiationException
-            | IllegalAccessException
-            | InvocationTargetException e) {
-            
+        catch (ReflectiveOperationException | RuntimeException e) {
+            if (e.getCause() instanceof RuntimeException) {
+                throw (RuntimeException)e.getCause();
+            }
             throw new RuntimeException(e);
         }
     }
@@ -72,11 +70,10 @@ public class ObjectCreationUtil {
             T obj = constructor.newInstance(params);
             return obj;
         }
-        catch (NoSuchMethodException
-            | InstantiationException
-            | IllegalAccessException
-            | InvocationTargetException e) {
-            
+        catch (ReflectiveOperationException | RuntimeException e) {
+            if (e.getCause() instanceof RuntimeException) {
+                throw (RuntimeException)e.getCause();
+            }
             throw new RuntimeException(e);
         }
     }

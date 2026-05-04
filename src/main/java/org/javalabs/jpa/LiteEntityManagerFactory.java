@@ -4,11 +4,10 @@ import org.javalabs.jpa.descriptor.PersistenceHandler;
 import org.javalabs.jpa.query.SBPool;
 import org.javalabs.jpa.query.SBPoolImpl;
 import org.javalabs.jpa.txn.PUInjector;
-import org.javalabs.jpa.util.BasicDataSource;
+import org.javalabs.jpa.ds.BasicDataSource;
 import org.javalabs.jpa.util.ClassScanner;
 import org.javalabs.jpa.util.DAOClassScanner;
 import org.javalabs.jpa.util.ObjectCreationUtil;
-import org.javalabs.jpa.util.PoolDataSource;
 import org.javalabs.jpa.util.PostConstructListener;
 import jakarta.persistence.Cache;
 import jakarta.persistence.EntityAgent;
@@ -39,6 +38,7 @@ import java.util.Map;
 import java.util.Properties;
 import java.util.function.Consumer;
 import java.util.function.Function;
+import javax.sql.DataSource;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -73,7 +73,7 @@ public class LiteEntityManagerFactory implements EntityManagerFactory {
     private final Map<String, Object> map;
     
     private SBPool pool;
-    private PoolDataSource pooledDs;
+    private DataSource pooledDs;
     
     private final ClassScanner scanner = new DAOClassScanner();
     
@@ -145,7 +145,7 @@ public class LiteEntityManagerFactory implements EntityManagerFactory {
             .getProperty("jpa-lite.data.source");
         
         if (datasource == null || (datasource = datasource.trim()).length() == 0) {
-            datasource = "org.javalabs.jpa.util.BasicDataSource";
+            datasource = "org.javalabs.jpa.ds.HikariLiteDataSource";
         }
         // Configure the init parameters.
         Map<String, Object> config = new HashMap<>();
@@ -167,14 +167,30 @@ public class LiteEntityManagerFactory implements EntityManagerFactory {
         }
 
         // Pass the connection pool related attributes.
-        pooledDs = ObjectCreationUtil.create(datasource
-            , new Class[] {Map.class}
-            , new Object[] {config});
-        
-        pooledDs.init();
-        
-        if (LOGGER.isInfoEnabled()) {
-            LOGGER.info("Initialized data source: {}", datasource);
+        try {
+            pooledDs = ObjectCreationUtil.create(datasource
+                , new Class[] {Map.class}
+                , new Object[] {config});
+
+            if (LOGGER.isInfoEnabled()) {
+                LOGGER.info("Initialized hikari data source: {}", datasource);
+            }
+        }
+        catch (RuntimeException e) {
+            if (e.getCause() instanceof ClassNotFoundException) {
+                datasource = System.getProperty("data.source", "org.javalabs.jpa.ds.BasicDataSource");
+                // datasource = "org.javalabs.jpa.ds.JpaLiteDataSource";
+                pooledDs = ObjectCreationUtil.create(datasource
+                    , new Class[] {Map.class}
+                    , new Object[] {config});
+
+                if (LOGGER.isInfoEnabled()) {
+                    LOGGER.info("Initialized jpa-lite data source: {}", datasource);
+                }
+            }
+            else {
+                throw e;
+            }
         }
     }
     
@@ -238,11 +254,11 @@ public class LiteEntityManagerFactory implements EntityManagerFactory {
     }
     
     Connection getPooledConnection() throws SQLException {
-        return pooledDs.getCachedConnection();
+        return pooledDs.getConnection();
     }
     
     void closePooledConnection(Connection connection) throws SQLException {
-        pooledDs.closeCachedConnection(connection);
+        connection.close();
     }
 
     @Override

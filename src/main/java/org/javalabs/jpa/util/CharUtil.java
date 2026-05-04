@@ -6,6 +6,10 @@ package org.javalabs.jpa.util;
  */
 public final class CharUtil {
     
+    public static String lowerFirst(String word) {
+        return Character.toLowerCase(word.charAt(0)) + word.substring(1);
+    }
+    
     public static String toCapitalisedCamelCase(String word) {
         return toCamelCase(word, true);
     }
@@ -54,11 +58,30 @@ public final class CharUtil {
             ret = ret.substring(0, ret.length() - 3) + "y";
         }
         else if (ret.endsWith("es")) {
-            ret = ret.substring(0, ret.length() - 2);
+            if (ret.charAt(ret.length() - 3) == 's' || ret.charAt(ret.length() - 3) == 'x') {
+                ret = ret.substring(0, ret.length() - 2);
+            }
+            else if (ret.charAt(ret.length() - 3) == 'v') {
+                ret = ret.substring(0, ret.length() - 3) + "fe";
+            }
+            else if (ret.charAt(ret.length() - 4) == 'c' && ret.charAt(ret.length() - 3) == 'h') {
+                ret = ret.substring(0, ret.length() - 2);
+            }
+            else if (ret.charAt(ret.length() - 4) == 's' && ret.charAt(ret.length() - 3) == 'h') {
+                ret = ret.substring(0, ret.length() - 2);
+            }
+            else {
+                ret = ret.substring(0, ret.length() - 1);
+            }
         }
         else if (ret.endsWith("s") && ! ret.toLowerCase().endsWith("status")) {
             ret = ret.substring(0, ret.length() - 1);
         }
         return ret;
+    }
+    
+    public static boolean vowel(char ch) {
+        char chLower = Character.toLowerCase(ch);
+        return chLower == 'a' || chLower == 'e' || chLower == 'i' || chLower == 'o' || chLower == 'u';
     }
 }

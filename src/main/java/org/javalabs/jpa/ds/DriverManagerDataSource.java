@@ -1,8 +1,5 @@
-package org.javalabs.jpa.util;
+package org.javalabs.jpa.ds;
 
-import java.io.BufferedOutputStream;
-import java.io.ByteArrayOutputStream;
-import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -22,15 +19,15 @@ import org.slf4j.LoggerFactory;
  *
  * @author schan280
  */
-public class JpaLiteDataSource implements DataSource {
+public class DriverManagerDataSource implements DataSource {
     
-    private static final Logger LOGGER = LoggerFactory.getLogger(JpaLiteDataSource.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(DriverManagerDataSource.class);
     private PrintWriter pw;
     
-    private final Map<String, Object> config = new HashMap<>();
+    protected final Map<String, Object> config = new HashMap<>();
     
-    public JpaLiteDataSource() {
-        this.pw = new PrintWriter(new OutputStreamWriter(new BufferedOutputStream(new ByteArrayOutputStream())));
+    public DriverManagerDataSource(Map<String, Object> config) {
+        init(config);
     }
     
     public void init(Map<String, Object> config) {

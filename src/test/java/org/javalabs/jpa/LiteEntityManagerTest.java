@@ -1,7 +1,5 @@
 package org.javalabs.jpa;
 
-import org.javalabs.jpa.JdbcException;
-import org.javalabs.jpa.LitePersistenceProvider;
 import org.javalabs.jpa.model.Employee;
 import org.javalabs.jpa.schema.SchemaGenerator;
 import jakarta.persistence.EntityManager;
