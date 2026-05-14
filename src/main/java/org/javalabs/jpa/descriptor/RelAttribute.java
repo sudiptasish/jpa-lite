@@ -14,10 +14,10 @@ import jakarta.persistence.FetchType;
  * A jpa entity can have zero or more relational attribute(s). Often they are broadly
  * categorized into:
  * <ul>
- *   <li> {@link OneToOne} </li>
- *   <li> {@link OneToMany} </li>
- *   <li> {@link ManyToOne} </li>
- *   <li> {@link ManyToMany} </li>
+ *   <li> {@link jakarta.persistence.OneToOne} </li>
+ *   <li> {@link jakarta.persistence.OneToMany} </li>
+ *   <li> {@link jakarta.persistence.ManyToOne} </li>
+ *   <li> {@link jakarta.persistence.ManyToMany} </li>
  * </ul>
  * 
  * If an entity has one of the attributes present, then the metadata about such
@@ -76,11 +76,11 @@ public interface RelAttribute extends EntityAttribute {
      * 
      * <p>
      * Relationship is always one-way. Following relationships are supported:
-     * <ui>
-     *   <li>OneToOne</li>
-     *   <li>OneToMany</li>
-     *   <li>ManyToOne</li>
-     *   <li>ManyToMany</li>
+     * <ul>
+     *   <li>{@link jakarta.persistence.OneToOne}</li>
+     *   <li>{@link jakarta.persistence.OneToMany}</li>
+     *   <li>{@link jakarta.persistence.ManyToOne}</li>
+     *   <li>{@link jakarta.persistence.ManyToMany}</li>
      * </ul>
      * 
      * Although the relationship information is well captured, however, jpa-lite
@@ -98,7 +98,7 @@ public interface RelAttribute extends EntityAttribute {
     }
     
     /**
-     * Represent a {@link JoinColumn} annotation in a parent-child relationship.
+     * Represent a {@link jakarta.persistence.JoinColumn} annotation in a parent-child relationship.
      */
     interface Join {
         

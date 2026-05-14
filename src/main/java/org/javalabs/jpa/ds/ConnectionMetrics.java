@@ -1,8 +1,15 @@
 package org.javalabs.jpa.ds;
 
 /**
+ * Represents metrics and statistics related to database connection usage.
+ * 
+ * <p>
+ * Tracks information such as connection acquisition time, usage duration,
+ * active and idle connection counts, and error rates.
+ * <p>
+ * Useful for monitoring, diagnostics, and performance tuning of connection pools.
  *
- * @author schan280
+ * @author Sudiptasish Chanda
  */
 public class ConnectionMetrics {
     

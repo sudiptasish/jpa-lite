@@ -79,7 +79,7 @@ public interface LiteEntityManager extends EntityManager {
      * Check that a transaction is started.
      * 
      * For any kind of write operation a transaction must be started. E.g., the APIs
-     * like {@link #persist(java.lang.Object) }, {@link #merge(java.lang.Object) 
+     * like {@link #persist(java.lang.Object) }, {@link #merge(java.lang.Object) }
      * and {@link #remove(java.lang.Object) } check the presence of a transaction.
      * If no transaction has started, then an exception will be thrown.
      */

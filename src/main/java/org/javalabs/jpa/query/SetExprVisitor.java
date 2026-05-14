@@ -3,7 +3,7 @@ package org.javalabs.jpa.query;
 /**
  * Visitor for {@link WhereExpr}.
  *
- * @author schan280
+ * @author Sudiptasish Chanda
  */
 public class SetExprVisitor implements Visitor {
     

@@ -5,8 +5,15 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
 
 /**
+ * Represents metadata for a database table column.
+ * 
+ * <p>
+ * Encapsulates details such as column name, data type, length, nullability,
+ * default value, and other column-level constraints.
+ * <p>
+ * Typically used in schema introspection, ORM mapping, or code generation.
  *
- * @author schan280
+ * @author Sudiptasish Chanda
  */
 @Entity
 @Table(name = "information_schema.columns")

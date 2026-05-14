@@ -12,8 +12,32 @@ import javax.management.MBeanServer;
 import javax.management.ObjectName;
 
 /**
+ * Provides metrics and monitoring support for JPA Lite operations.
  *
- * @author schan280
+ * <p>The {@code JpaLiteMetrics} class is responsible for collecting,
+ * aggregating, and exposing performance and usage metrics related to
+ * persistence operations executed via a lightweight JPA layer.</p>
+ *
+ * <p>Typical metrics captured may include:</p>
+ * <ul>
+ *   <li>Number of entity operations (persist, merge, remove, find)</li>
+ *   <li>Query execution counts and durations</li>
+ *   <li>Transaction counts and timings</li>
+ *   <li>Error and exception rates</li>
+ * </ul>
+ *
+ * <p>This class can be used to integrate with monitoring systems or logging
+ * frameworks to provide visibility into persistence behavior and performance
+ * characteristics.</p>
+ *
+ * <p>Implementations may support:</p>
+ * <ul>
+ *   <li>Custom metric reporters (e.g., logs, JMX, Prometheus)</li>
+ *   <li>Aggregation and sampling strategies</li>
+ *   <li>Hooks for intercepting persistence life cycle events</li>
+ * </ul>
+ *
+ * @author Sudiptasish Chanda
  */
 public class JpaLiteMetrics {
     

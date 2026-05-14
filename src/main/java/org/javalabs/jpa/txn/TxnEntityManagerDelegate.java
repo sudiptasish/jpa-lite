@@ -29,6 +29,21 @@ import java.util.List;
 import java.util.Map;
 
 /**
+ * Delegate wrapper around an {@link EntityManager} that adds transaction-aware behavior.
+ *
+ * <p>This class is responsible for managing interaction with the
+ * underlying {@code EntityManager} in the context of active transactions.
+ * It may ensure that operations are executed within a transaction
+ * boundary and handle life cycle concerns accordingly.</p>
+ *
+ * <p>Typical responsibilities include:</p>
+ * <ul>
+ *   <li>Delegating persistence operations</li>
+ *   <li>Ensuring transaction participation</li>
+ *   <li>Managing entity manager lifecycle (if applicable)</li>
+ * </ul>
+ *
+ * <p><b>Thread safety:</b> Not thread-safe unless explicitly documented.</p>
  *
  * @author Sudiptasish Chanda
  */

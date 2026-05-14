@@ -6,8 +6,16 @@ import java.util.List;
 import java.util.Map;
 
 /**
+ * Configuration class for lightweight data source setup.
+ * 
+ * <p>
+ * Encapsulates properties required to initialize and configure a data source,
+ * such as connection URL, credentials, pool size, and timeout settings.
+ * <p>
+ * Designed for minimalistic or embedded environments where a lightweight
+ * connection management solution is preferred.
  *
- * @author schan280
+ * @author Sudiptasish Chanda
  */
 public class LiteDataSourceConfig {
 

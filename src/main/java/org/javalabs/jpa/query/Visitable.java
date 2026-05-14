@@ -9,7 +9,7 @@ package org.javalabs.jpa.query;
  * method as an argument, providing the method access to all necessary data contained
  * within this object.
  * 
- * @author schan280
+ * @author Sudiptasish Chanda
  */
 public interface Visitable {
     

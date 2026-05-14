@@ -6,8 +6,13 @@ import java.util.List;
 import java.util.Map;
 
 /**
+ * Represents metadata for a JPA entity.
+ * 
+ * <p>
+ * Contains information about entity name, table mapping, fields,
+ * relationships, and associated annotations.
  *
- * @author schan280
+ * @author Sudiptasish Chanda
  */
 public final class JpaEntity {
     

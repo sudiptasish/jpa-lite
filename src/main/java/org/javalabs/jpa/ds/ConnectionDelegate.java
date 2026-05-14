@@ -5,8 +5,17 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
 /**
+ * Acts as a delegating wrapper for a database connection.
+ * 
+ * <p>
+ * Forwards method calls to an underlying connection instance while optionally
+ * adding additional behavior such as logging, metrics collection, or lifecycle
+ * management.
+ * <p>
+ * Commonly used to extend or customize connection behavior without modifying
+ * the underlying implementation.
  *
- * @author schan280
+ * @author Sudiptasish Chanda
  */
 public class ConnectionDelegate implements InvocationHandler {
 

@@ -4,8 +4,14 @@ import org.javalabs.jpa.util.CharUtil;
 import java.util.List;
 
 /**
+ * Helper class for generating constructors for target classes or entities.
+ * 
+ * <p>
+ * Provides utility methods to create default, parameterized, or custom constructors
+ * as part of code generation workflows. May support handling field initialization,
+ * visibility modifiers, and annotations.
  *
- * @author schan280
+ * @author Sudiptasish Chanda
  */
 public class ConstructorGenHelper {
     

@@ -19,7 +19,7 @@ import org.slf4j.LoggerFactory;
 
 /**
  *
- * @author schan280
+ * @author Sudiptasish Chanda
  */
 public class JPADBExtension implements BeforeAllCallback, AfterAllCallback, ExtensionContext.Store.CloseableResource {
     

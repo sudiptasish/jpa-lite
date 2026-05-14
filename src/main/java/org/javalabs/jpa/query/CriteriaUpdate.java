@@ -6,8 +6,13 @@ import java.util.Collection;
 import java.util.List;
 
 /**
+ * Represents a criteria-based update operation.
+ * 
+ * <p>
+ * Provides a programmatic way to construct update queries using a criteria API,
+ * allowing dynamic and type-safe modification of entity attributes.
  *
- * @author schan280
+ * @author Sudiptasish Chanda
  */
 public class CriteriaUpdate {
     

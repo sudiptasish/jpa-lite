@@ -11,6 +11,35 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
+ * {@link Injector} implementation that integrates dependency injection with a JPA persistence unit.
+ *
+ * <p>
+ * The {@code PUInjector} is responsible for resolving and injecting
+ * dependencies while providing access to persistence-related resources
+ * such as {@link jakarta.persistence.EntityManager} instances associated
+ * with a configured persistence unit.
+ * </p>
+ *
+ * <p>
+ * This implementation typically bridges application components with
+ * JPA by:
+ * </p>
+ * 
+ * <ul>
+ *   <li>Providing {@code EntityManager} instances scoped to the current
+ *       transaction or context</li>
+ *   <li>Injecting persistence dependencies into managed objects</li>
+ *   <li>Coordinating with transaction boundaries (container-managed or
+ *       application-managed)</li>
+ *   <li>Delegating non-persistence dependency resolution to the underlying
+ *       injection mechanism</li>
+ * </ul>
+ *
+ * <p>
+ * Instances of this class are usually configured with a persistence
+ * unit name and optionally an {@link jakarta.persistence.EntityManagerFactory}
+ * or related configuration required to bootstrap JPA access.
+ * </p>
  *
  * @author Sudiptasish Chanda
  */

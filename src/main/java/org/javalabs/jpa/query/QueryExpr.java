@@ -3,7 +3,7 @@ package org.javalabs.jpa.query;
 /**
  * The expression criteria class to hold the parsed expression.
  *
- * @author schan280
+ * @author Sudiptasish Chanda
  */
 public class QueryExpr implements Expr {
     

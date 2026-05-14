@@ -5,7 +5,7 @@ import java.util.List;
 /**
  * Select expression.
  *
- * @author schan280
+ * @author Sudiptasish Chanda
  */
 public class SelectExpr extends AbstractExpr {
     

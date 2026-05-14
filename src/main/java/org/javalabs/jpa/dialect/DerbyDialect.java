@@ -12,8 +12,12 @@ import java.util.List;
 import java.util.Map;
 
 /**
+ * Dialect implementation for Apache Derby databases.
+ * 
+ * <p>
+ * Handles Derby-specific SQL syntax and capabilities.
  *
- * @author schan280
+ * @author Sudiptasish Chanda
  */
 public class DerbyDialect extends AbstractDBDialect {
     

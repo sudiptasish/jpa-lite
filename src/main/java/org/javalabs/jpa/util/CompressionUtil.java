@@ -7,8 +7,16 @@ import java.util.Base64;
 import java.util.zip.GZIPOutputStream;
 
 /**
+ * Utility class for handling data compression and decompression operations.
+ * 
+ * <p>
+ * Provides methods to compress and decompress data using standard algorithms
+ * such as GZIP, ZIP, or other supported formats. This class is typically used
+ * to optimize storage or transmission of data.
+ * <p>
+ * All methods are expected to be stateless and thread-safe.
  *
- * @author schan280
+ * @author Sudiptasish Chanda
  */
 public class CompressionUtil {
     

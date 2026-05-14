@@ -10,7 +10,7 @@ import java.util.Collection;
  * expression. However, in future, multiple {@link Visitor} classes can be introduced
  * to handle operator specific logic.
  *
- * @author schan280
+ * @author Sudiptasish Chanda
  */
 public class ExprVisitor implements Visitor {
 

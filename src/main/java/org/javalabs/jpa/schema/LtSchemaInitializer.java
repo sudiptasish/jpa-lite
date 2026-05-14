@@ -29,7 +29,7 @@ import org.slf4j.LoggerFactory;
  * <p>
  * This class is responsible for generating table scripts from the managed entities.
  *
- * @author schan280
+ * @author Sudiptasish Chanda
  */
 public class LtSchemaInitializer {
     
@@ -138,8 +138,11 @@ public class LtSchemaInitializer {
     /**
      * Generate the create table script for this database.
      * 
-     * @param dialect
-     * @param file
+     * @param sqlDialect
+     * @param filename
+     * @param entities
+     * @param startScript
+     * 
      * @throws IOException 
      */
     private void generateCreateScript(SQLDialect sqlDialect
@@ -248,8 +251,8 @@ public class LtSchemaInitializer {
     /**
      * Generate the drop table script for this database.
      * 
-     * @param dialect
-     * @param file
+     * @param sqlDialect
+     * @param filename
      * @throws IOException 
      */
     private void generateDropScript(SQLDialect sqlDialect, String filename) throws IOException {

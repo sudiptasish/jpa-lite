@@ -12,7 +12,7 @@ package org.javalabs.jpa.query;
  * parse them and make them part of the final structure. Visitor design pattern helps
  * us achieving the same.
  *
- * @author schan280
+ * @author Sudiptasish Chanda
  */
 public interface Visitor {
     

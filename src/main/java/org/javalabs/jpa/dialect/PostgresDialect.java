@@ -20,8 +20,12 @@ import java.util.Map;
 import org.javalabs.jpa.dialect.postgres.ConstraintMetadata;
 
 /**
+ * Dialect implementation for PostgreSQL databases.
+ * 
+ * <p>
+ * Handles PostgreSQL-specific SQL syntax and features.
  *
- * @author schan280
+ * @author Sudiptasish Chanda
  */
 public class PostgresDialect extends AbstractDBDialect {
 

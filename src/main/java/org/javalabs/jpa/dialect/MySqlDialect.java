@@ -10,8 +10,12 @@ import java.util.List;
 import java.util.Map;
 
 /**
+ * Dialect implementation for MySQL databases.
+ * 
+ * <p>
+ * Provides MySQL-specific SQL handling and optimizations.
  *
- * @author schan280
+ * @author Sudiptasish Chanda
  */
 public class MySqlDialect extends AbstractDBDialect {
     

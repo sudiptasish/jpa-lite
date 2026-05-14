@@ -19,7 +19,7 @@ import static org.junit.jupiter.api.Assertions.fail;
 
 /**
  *
- * @author schan280
+ * @author Sudiptasish Chanda
  */
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 @ExtendWith({JPADBExtension.class})

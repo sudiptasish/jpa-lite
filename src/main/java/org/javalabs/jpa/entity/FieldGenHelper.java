@@ -5,8 +5,13 @@ import java.math.BigDecimal;
 import java.text.MessageFormat;
 
 /**
+ * Helper class for generating field definitions.
+ * 
+ * <p>
+ * Provides utilities to create fields with appropriate types, modifiers,
+ * annotations, and default values as part of code generation.
  *
- * @author schan280
+ * @author Sudiptasish Chanda
  */
 public final class FieldGenHelper {
     

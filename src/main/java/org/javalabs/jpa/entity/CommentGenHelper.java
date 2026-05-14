@@ -1,8 +1,13 @@
 package org.javalabs.jpa.entity;
 
 /**
+ * Utility class for generating structured comments such as Javadoc.
+ * 
+ * <p>
+ * Provides methods to construct formatted comments for classes, methods,
+ * and fields, ensuring consistency and readability in generated code.
  *
- * @author schan280
+ * @author Sudiptasish Chanda
  */
 public class CommentGenHelper {
  

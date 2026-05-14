@@ -7,7 +7,7 @@ package org.javalabs.jpa;
 
 /**
  *
- * @author schan280
+ * @author Sudiptasish Chanda
  */
 public class TestEntityManager {
     

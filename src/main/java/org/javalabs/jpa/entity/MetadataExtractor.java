@@ -10,12 +10,17 @@ import java.lang.reflect.Method;
 import java.util.Map;
 
 /**
+ * Extracts metadata from classes, schemas, or configuration sources.
+ * 
+ * <p>
+ * Responsible for analyzing input structures and producing metadata
+ * representations used for code generation, mapping, or runtime processing.
  *
- * @author schan280
+ * @author Sudiptasish Chanda
  */
 public class MetadataExtractor {
     
-    private static final String AUTHOR = "schan280";
+    private static final String AUTHOR = "Sudiptasish Chanda";
     
     private static final String COMMENT = "This class is generated using jpa-lite framework";
     

@@ -55,7 +55,7 @@ import java.util.Map;
  * generated table script along with index definition in the file mentioned by
  * <code>javax.persistence.schema-generation.scripts.create-target</code> attribute.
  *
- * @author schan280
+ * @author Sudiptasish Chanda
  */
 public class SchemaGenerator {
     

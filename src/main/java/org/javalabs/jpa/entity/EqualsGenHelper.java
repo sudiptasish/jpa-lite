@@ -4,8 +4,13 @@ import org.javalabs.jpa.util.CharUtil;
 import java.util.List;
 
 /**
+ * Helper class for generating {@code equals} method implementations.
+ * 
+ * <p>
+ * Provides standardized logic for comparing object fields while adhering
+ * to the contract between {@code equals} and {@code hashCode}.
  *
- * @author schan280
+ * @author Sudiptasish Chanda
  */
 public class EqualsGenHelper {
     

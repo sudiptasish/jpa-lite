@@ -11,8 +11,46 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
+ * Listener responsible for executing database creation scripts defined
+ * in {@code persistence.xml}.
  *
- * @author schan280
+ * <p>The {@code CreateScriptListener} is invoked during persistence unit
+ * initialization to process and execute table creation (DDL) scripts
+ * configured via JPA properties. It typically reads script locations
+ * specified in {@code persistence.xml} and runs them against the target
+ * database.</p>
+ *
+ * <p>This listener is commonly used to:</p>
+ * <ul>
+ *   <li>Initialize database schema during application startup</li>
+ *   <li>Execute DDL scripts for table creation</li>
+ *   <li>Support environments where schema generation is script-driven</li>
+ * </ul>
+ *
+ * <p>The script execution behavior may depend on standard JPA properties
+ * such as:</p>
+ * <ul>
+ *   <li>{@code javax.persistence.schema-generation.create-script-source}</li>
+ *   <li>{@code javax.persistence.schema-generation.database.action}</li>
+ * </ul>
+ *
+ * <p>Implementations may handle concerns such as:</p>
+ * <ul>
+ *   <li>Script parsing and execution order</li>
+ *   <li>Error handling and logging</li>
+ *   <li>Transaction boundaries during script execution</li>
+ * </ul>
+ *
+ * <p><b>Lifecycle:</b> Typically triggered once during persistence unit
+ * bootstrap after {@code persistence.xml} has been processed.</p>
+ *
+ * <p><b>Thread safety:</b> Not required to be thread-safe as it is generally
+ * executed during single-threaded initialization.</p>
+ *
+ * <p><b>Note:</b> Care should be taken to avoid re-running scripts in
+ * environments where schema already exists.</p>
+ *
+ * @author Sudiptasish Chanda
  */
 public class CreateScriptListener implements PostConstructListener {
     

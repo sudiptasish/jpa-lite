@@ -29,7 +29,8 @@ public abstract class Binder {
      * @param parents
      * @param rel
      * @param children
-     * @return 
+     * 
+     * @return T
      */
     public abstract <T> List<T> bind(List<T> parents
         , RelAttribute rel

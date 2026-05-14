@@ -15,14 +15,14 @@ package org.javalabs.jpa.query;
  * 
  * Followings are the example of some valid expressions:
  * <ul>
- *   <li>location = 'NY'</il>
- *   <li>salary > 35000</il>
- *   <li>age <= 50</il>
- *   <li>age BETWEEN 18 AND 40</il>
- *   <li>department IN ('HR', 'R&D', 'Finance')</il>
+ *   <li>location = 'NY'</li>
+ *   <li>salary &gt; 35000</li>
+ *   <li>age &lt;= 50</li>
+ *   <li>age BETWEEN 18 AND 40</li>
+ *   <li>department IN ('HR', 'RAndD', 'Finance')</li>
  * </ul>
  * 
- * @author schan280
+ * @author Sudiptasish Chanda
  */
 public interface Expr extends Visitable {
     

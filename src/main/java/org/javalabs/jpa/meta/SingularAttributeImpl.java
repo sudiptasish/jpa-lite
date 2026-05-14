@@ -11,7 +11,11 @@ import jakarta.persistence.metamodel.Type;
 import java.lang.reflect.Field;
 
 /**
- * Concrete class that represents a single-valued attribute.
+ * Implementation of a singular attribute in the persistence metamodel.
+ * 
+ * <p>
+ * Represents a non-collection attribute associated with an entity or
+ * embeddable type.
  *
  * @author Sudiptasish Chanda
  */

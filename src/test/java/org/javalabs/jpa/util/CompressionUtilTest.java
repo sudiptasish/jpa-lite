@@ -12,7 +12,7 @@ import org.junit.jupiter.api.Test;
 
 /**
  *
- * @author schan280
+ * @author Sudiptasish Chanda
  */
 public class CompressionUtilTest {
 

@@ -3,8 +3,13 @@ package org.javalabs.jpa.entity;
 import org.javalabs.jpa.util.CharUtil;
 
 /**
+ * Helper class for generating method definitions programmatically.
+ * 
+ * <p>
+ * Supports creation of method signatures, bodies, modifiers, and annotations
+ * as part of dynamic code generation or compilation workflows.
  *
- * @author schan280
+ * @author Sudiptasish Chanda
  */
 public final class MethodGenHelper {
     

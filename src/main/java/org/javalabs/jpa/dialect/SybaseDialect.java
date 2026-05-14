@@ -10,8 +10,12 @@ import java.util.List;
 import java.util.Map;
 
 /**
+ * Dialect implementation for Sybase databases.
+ * 
+ * <p>
+ * Provides SQL handling tailored to Sybase-specific behavior.
  *
- * @author schan280
+ * @author Sudiptasish Chanda
  */
 public class SybaseDialect extends AbstractDBDialect {
     

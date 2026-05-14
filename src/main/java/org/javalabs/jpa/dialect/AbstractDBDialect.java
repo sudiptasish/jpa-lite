@@ -12,8 +12,13 @@ import java.util.Iterator;
 import java.util.List;
 
 /**
+ * Abstract base class for database dialect implementations.
+ * 
+ * <p>
+ * Defines common behavior and extension points for handling
+ * database-specific SQL generation and features.
  *
- * @author schan280
+ * @author Sudiptasish Chanda
  */
 public abstract class AbstractDBDialect implements SQLDialect {
 

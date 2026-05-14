@@ -1,8 +1,13 @@
 package org.javalabs.jpa.entity;
 
 /**
+ * Represents metadata for a JPA entity field.
+ * 
+ * <p>
+ * Encapsulates details such as field name, type, column mapping, and
+ * persistence-related annotations.
  *
- * @author schan280
+ * @author Sudiptasish Chanda
  */
 public class JpaField {
     

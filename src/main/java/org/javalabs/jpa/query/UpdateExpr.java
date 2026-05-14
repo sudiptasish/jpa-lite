@@ -1,8 +1,13 @@
 package org.javalabs.jpa.query;
 
 /**
+ * Represents an update expression in a query model.
+ * 
+ * <p>
+ * Encapsulates field assignments and conditions used to construct
+ * update operations programmatically.
  *
- * @author schan280
+ * @author Sudiptasish Chanda
  */
 public class UpdateExpr extends AbstractExpr {
     

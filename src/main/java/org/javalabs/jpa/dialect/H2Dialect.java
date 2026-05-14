@@ -11,8 +11,12 @@ import java.util.List;
 import java.util.Map;
 
 /**
+ * Dialect implementation for H2 in-memory database.
+ * 
+ * <p>
+ * Supports SQL generation and features specific to H2.
  *
- * @author schan280
+ * @author Sudiptasish Chanda
  */
 public class H2Dialect extends AbstractDBDialect {
     

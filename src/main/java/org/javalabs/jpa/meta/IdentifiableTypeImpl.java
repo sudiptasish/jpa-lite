@@ -11,7 +11,11 @@ import java.util.LinkedHashSet;
 import java.util.Set;
 
 /**
- * Class that represents an identifiable type.
+ * Implementation of an identifiable type in a persistence model.
+ * 
+ * <p>
+ * Represents types that have an identity, typically entities or mapped
+ * superclasses, and provides access to identifier-related metadata.
  *
  * @author Sudiptasish Chanda
  */

@@ -3,7 +3,7 @@ package org.javalabs.jpa.query;
 /**
  * Visitor for {@link OrderByExpr}.
  *
- * @author schan280
+ * @author Sudiptasish Chanda
  */
 public class OrderByExprVisitor implements Visitor {
 

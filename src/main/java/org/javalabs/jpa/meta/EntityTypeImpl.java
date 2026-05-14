@@ -7,7 +7,11 @@ import jakarta.persistence.metamodel.Type;
 import java.util.Map;
 
 /**
- * Platform provided implementation for {@link EntityType}.
+ * Implementation of an entity type in the persistence metamodel.
+ * 
+ * <p>
+ * Provides metadata and behavior specific to entity classes,
+ * including identifier and attribute management.
  *
  * @author Sudiptasish Chanda
  */

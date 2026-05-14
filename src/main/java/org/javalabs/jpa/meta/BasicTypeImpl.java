@@ -4,7 +4,11 @@ import jakarta.persistence.metamodel.BasicType;
 import jakarta.persistence.metamodel.Type.PersistenceType;
 
 /**
- * Concrete class that represents a basic type.
+ * Implementation of a basic (non-entity) type in the persistence metamodel.
+ * 
+ * <p>
+ * Represents simple attribute types such as primitives, wrappers,
+ * and standard Java types.
  *
  * @author Sudiptasish Chanda
  */

@@ -6,7 +6,7 @@ import java.util.List;
 /**
  * Where clause expression.
  *
- * @author schan280
+ * @author Sudiptasish Chanda
  */
 public class WhereExpr extends AbstractExpr {
     

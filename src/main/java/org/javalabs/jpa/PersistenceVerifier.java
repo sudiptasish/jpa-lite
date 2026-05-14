@@ -9,7 +9,7 @@ import java.util.Properties;
 /**
  * This verifier class verifies the database properties in the persistence config file.
  *
- * @author schan280
+ * @author Sudiptasish Chanda
  */
 public class PersistenceVerifier {
     

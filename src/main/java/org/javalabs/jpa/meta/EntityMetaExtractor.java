@@ -3,6 +3,11 @@ package org.javalabs.jpa.meta;
 import jakarta.persistence.metamodel.EntityType;
 
 /**
+ * Extracts metadata specific to entity classes.
+ * 
+ * <p>
+ * Responsible for analyzing entity definitions and producing
+ * structured metadata used for ORM mapping or code generation.
  *
  * @author Sudiptasish Chanda
  */

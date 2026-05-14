@@ -13,8 +13,17 @@ import javax.sql.PooledConnection;
 import javax.sql.StatementEventListener;
 
 /**
+ * Represents a lightweight wrapper around a physical database connection
+ * managed within a connection pool.
+ * 
+ * <p>
+ * This class typically maintains metadata about the connection, such as its
+ * current state, usage status, and life cycle events. It may also provide hooks
+ * for tracking usage and handling connection recycling.
+ * <p>
+ * Intended to be used internally by connection pooling implementations.
  *
- * @author schan280
+ * @author Sudiptasish Chanda
  */
 public class LitePooledConnection implements PooledConnection {
 

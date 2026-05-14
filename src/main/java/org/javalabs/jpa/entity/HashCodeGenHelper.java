@@ -4,8 +4,13 @@ import org.javalabs.jpa.util.CharUtil;
 import java.util.List;
 
 /**
+ * Helper class for generating {@code hashCode} method implementations.
+ * 
+ * <p>
+ * Provides standardized logic to compute hash codes based on class fields,
+ * ensuring consistency with {@code equals} implementations.
  *
- * @author schan280
+ * @author Sudiptasish Chanda
  */
 public class HashCodeGenHelper {
     

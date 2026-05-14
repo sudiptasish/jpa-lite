@@ -11,8 +11,24 @@ import javax.sql.DataSource;
 import org.javalabs.jpa.util.ObjectCreationUtil;
 
 /**
+ * Lightweight {@link javax.sql.DataSource} implementation inspired by HikariCP.
+ * 
+ * <p>
+ * Provides efficient and minimal-overhead database connection management by
+ * leveraging a lightweight connection pool. Designed for high performance and
+ * low latency, this data source manages the lifecycle of pooled connections,
+ * including creation, acquisition, validation, and release.
+ * <p>
+ * Typically configured using {@code LiteDataSourceConfig} or equivalent configuration
+ * objects, and intended for environments where a simplified alternative to
+ * full-featured connection pools is sufficient.
+ * <p>
+ * This implementation may include basic metrics, timeout handling, and resource
+ * management while avoiding the complexity of larger pooling frameworks.
+ * <p>
+ * Thread-safe and suitable for concurrent access in multi-threaded applications.
  *
- * @author schan280
+ * @author Sudiptasish Chanda
  */
 public class HikariLiteDataSource implements DataSource {
     

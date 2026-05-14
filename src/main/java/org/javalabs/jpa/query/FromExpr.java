@@ -3,7 +3,7 @@ package org.javalabs.jpa.query;
 /**
  * From clause expression
  *
- * @author schan280
+ * @author Sudiptasish Chanda
  */
 public class FromExpr extends AbstractExpr {
     

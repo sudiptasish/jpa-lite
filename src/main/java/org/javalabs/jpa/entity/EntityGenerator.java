@@ -12,8 +12,21 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
+ * Responsible for generating entity classes or entity representations based on
+ * provided metadata, schema definitions, or configuration.
+ * 
+ * <p>
+ * This class typically encapsulates logic for creating domain/entity objects
+ * dynamically, often used in code generation workflows, ORM setups, or schema-driven
+ * development. It may support generating source code, bytecode, or in-memory
+ * representations of entities.
+ * <p>
+ * Implementations may leverage reflection, templates, or annotation processing
+ * to construct entities with appropriate fields, mappings, and constraints.
+ * <p>
+ * Designed to centralize and standardize entity generation logic across the system.
  *
- * @author schan280
+ * @author Sudiptasish Chanda
  */
 public class EntityGenerator {
     

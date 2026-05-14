@@ -15,6 +15,14 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
+ * Scans and identifies Data Access Object (DAO) classes within a given package or classpath.
+ * 
+ * <p>
+ * This class is responsible for discovering DAO implementations, typically based on
+ * annotations, naming conventions, or interface implementations. It may be used during
+ * application startup for automatic registration or configuration of persistence components.
+ * <p>
+ * Supports extensibility for custom scanning rules and filtering mechanisms.
  *
  * @author Sudiptasish Chanda
  */

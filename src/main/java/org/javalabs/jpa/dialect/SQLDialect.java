@@ -31,66 +31,73 @@ import java.util.Map;
  *   <li>Drop Index</li>
  * </ul>
  *
- * @author schan280
+ * @author Sudiptasish Chanda
  */
 public interface SQLDialect {
     
     /**
      * Form and return the jdbc database url.
      * 
-     * @param host
-     * @param port
-     * @param db
-     * @return String
+     * @param host      Remote database host name
+     * @param port      Remote database port
+     * @param db        Remote database name.
+     * @return String   The connection string compatible with underlying database.
      */
     String db_url(String host, String port, String db);
     
     /**
      * Return the database specific run command.
-     * @param sqlFile
-     * @return String
+     * 
+     * @param sqlFile   A .sql file to be run
+     * @return String   The status of the run
      */
     String run_command(String sqlFile);
     
     /**
      * Return the sql query to fetch the table names under a specific schema.
-     * @param schema
-     * @return String
+     * 
+     * @param schema    The schema name the tables belong to.
+     * @return String   Return the well formatted db specific sql query string.
      */
     String query_tables(String schema);
     
     /**
      * Return the database specific CREATE TABLE syntax.
-     * @param desc
-     * @return String
+     * 
+     * @param desc      The class descriptor.
+     * @return String   Return the create table script for the jpa entity represented by this class descriptor.
      */
     String create_table(ClassDescriptor desc);
     
     /**
      * Return the database specific DROP TABLE syntax.
-     * @param desc
-     * @return String
+     * 
+     * @param desc      The class descriptor
+     * @return String   The well formatted drop table script.
      */
     String drop_table(ClassDescriptor desc);
     
     /**
      * Return the database specific ALTER TABLE ADD CONSTRAINT syntax.
-     * @param desc
-     * @return String
+     * 
+     * @param desc      The class descriptor
+     * @return String   The well formatted sql script to create the primary key for the table.
      */
     String primary_key(ClassDescriptor desc);
     
     /**
      * Return the database specific CREATE {UNIQUE} INDEX syntax.
-     * @param desc
-     * @return String
+     * 
+     * @param desc      The class descriptor
+     * @return String   The well formatted sql script to create the unique index for the table.
      */
     String index(ClassDescriptor desc);
     
     /**
      * Return the database specific foreign key statement.
-     * @param entity
-     * @return String
+     * 
+     * @param desc      The class descriptor
+     * @return String   The well formatted sql script to create the foreign key constraint for the table.
      */
     String foreign_key(ClassDescriptor desc);
     
@@ -110,13 +117,13 @@ public interface SQLDialect {
     
     /**
      * Return the timestamp query for this database.
-     * @return String
+     * @return String   Return the system timestamp of the database server.
      */
     String timestamp();
     
     /**
      * Return the version query for this database.
-     * @return String
+     * @return String   Return the version of the database
      */
     String version();
     
@@ -124,7 +131,7 @@ public interface SQLDialect {
      * Return the classes needed to query the db and table metadata.
      * These classes are internal to vendor, and are jpa entities.
      * 
-     * @return List
+     * @return List Return the metadata class list.
      */
     List<Class<?>> metadataClasses();
     
@@ -132,10 +139,10 @@ public interface SQLDialect {
      * Query the database to get the metadata for table and associated columns and constraints.
      * It will generate the result in the form of a orm.xml.
      * 
-     * @param em
-     * @param props
+     * @param em        The entity manager object
+     * @param props     The persistence api property set.
      * 
-     * @return String
+     * @return String   Return the table metadata string
      */
     String db_table_metadata(EntityManager em, Map<String, Object> props);
 }

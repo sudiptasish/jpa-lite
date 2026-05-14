@@ -5,8 +5,15 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
 
 /**
+ * Represents metadata for a primary key constraint.
+ * 
+ * <p>
+ * Contains information about the primary key columns, constraint name,
+ * and key generation strategy if applicable.
+ * <p>
+ * Used in database schema representation and entity mapping.
  *
- * @author schan280
+ * @author Sudiptasish Chanda
  */
 @Entity
 @Table(name = "information_schema.key_column_usage")

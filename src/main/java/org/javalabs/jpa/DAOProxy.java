@@ -27,6 +27,7 @@ import jakarta.persistence.EntityManager;
  * public interface EmployeeDAO {
  *     void insert(Employee emp);
  * }
+ * }
  * </pre>
  * 
  * The corresponding implementation:
@@ -42,6 +43,7 @@ import jakarta.persistence.EntityManager;
  *     public void insert(Employee emp) {
  *         em.persist(emp);
  *     }
+ * }
  * }
  * </pre>
  * 
@@ -60,10 +62,10 @@ import jakarta.persistence.EntityManager;
  * 
  *     // Other business methods
  * }
+ * }
  * </pre>
  * 
- * 
- * @author schan280
+ * @author Sudiptasish Chanda
  */
 public class DAOProxy {
     

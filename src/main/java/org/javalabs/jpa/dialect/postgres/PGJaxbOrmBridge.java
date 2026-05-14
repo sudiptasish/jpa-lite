@@ -29,8 +29,15 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
+ * Bridges PostgreSQL-specific schema or metadata with JAXB-based ORM representations.
+ * 
+ * <p>
+ * Responsible for transforming PostgreSQL database metadata into JAXB-compatible
+ * objects, enabling XML-based ORM configuration or interoperability.
+ * <p>
+ * May handle type conversions, naming conventions, and vendor-specific mappings.
  *
- * @author schan280
+ * @author Sudiptasish Chanda
  */
 public class PGJaxbOrmBridge {
     

@@ -6,7 +6,7 @@ import java.util.List;
 /**
  * Set clause expression.
  *
- * @author schan280
+ * @author Sudiptasish Chanda
  */
 public class SetExpr extends AbstractExpr {
     

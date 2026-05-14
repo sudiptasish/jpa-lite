@@ -8,8 +8,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
+ * Represents metadata for a database table.
+ * 
+ * <p>
+ * Aggregates information about table name, columns, primary keys,
+ * indexes, and constraints.
+ * <p>
+ * Commonly used in schema extraction, ORM frameworks, and code generation tools.
  *
- * @author schan280
+ * @author Sudiptasish Chanda
  */
 @Entity
 @Table(name = "information_schema.tables")

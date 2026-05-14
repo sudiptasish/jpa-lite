@@ -6,8 +6,13 @@ import java.lang.reflect.Method;
 import java.util.Map;
 
 /**
+ * Initializes and configures lightweight model representations.
+ * 
+ * <p>
+ * Responsible for setting up model metadata, relationships, and default values
+ * required for runtime processing or code generation.
  *
- * @author schan280
+ * @author Sudiptasish Chanda
  */
 public class LtModelInitializer {
     

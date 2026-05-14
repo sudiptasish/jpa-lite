@@ -6,8 +6,13 @@ import java.util.Collection;
 import java.util.List;
 
 /**
+ * Represents a criteria-based delete operation.
+ * 
+ * <p>
+ * Provides a programmatic and type-safe way to construct delete queries
+ * using a criteria API.
  *
- * @author schan280
+ * @author Sudiptasish Chanda
  */
 public class CriteriaDelete {
     

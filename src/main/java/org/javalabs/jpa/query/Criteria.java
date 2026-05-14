@@ -13,7 +13,7 @@ import java.util.List;
  * to determine whether to include the record that contains each value.
  * For example, <code>location = 'NY'</code> is an expression that jpa can compare
  * to values in a text field in a pooledBuffer. 
- * Another example could be, <code>dept IN ('HR', 'R&D')</code>.
+ * Another example could be, <code>dept IN ('HR', 'RAndD')</code>.
  * 
  * Criteria queries are written using Java programming language APIs, are typesafe,
  * and are portable. Such queries work regardless of the underlying data store.
@@ -75,7 +75,7 @@ import java.util.List;
  * }
  * </pre>
  *
- * @author schan280
+ * @author Sudiptasish Chanda
  */
 public class Criteria {
     

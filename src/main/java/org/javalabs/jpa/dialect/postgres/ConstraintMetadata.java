@@ -5,8 +5,15 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
 
 /**
+ * Represents metadata for a database constraint.
+ * 
+ * <p>
+ * Includes details about constraint type (e.g., unique, foreign key, check),
+ * associated columns, and constraint definitions.
+ * <p>
+ * Used for schema modeling and validation purposes.
  *
- * @author schan280
+ * @author Sudiptasish Chanda
  */
 @Entity
 @Table(name = "information_schema.check_constraints")

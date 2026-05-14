@@ -1,8 +1,9 @@
 package org.javalabs.jpa.util;
 
 /**
+ * Utility class for string manipulation.
  *
- * @author schan280
+ * @author Sudiptasish Chanda
  */
 public final class CharUtil {
     

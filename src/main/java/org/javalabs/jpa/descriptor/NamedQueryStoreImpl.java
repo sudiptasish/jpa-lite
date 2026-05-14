@@ -4,6 +4,11 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
+ * Implementation of a store for named queries.
+ * 
+ * <p>
+ * Manages registration, retrieval, and lifecycle of predefined
+ * queries identified by unique names.
  *
  * @author Sudiptasish Chanda
  */

@@ -22,7 +22,7 @@ package org.javalabs.jpa.query;
  * {@link QueryBuffer} will become eligible for garbage collection immediately 
  * after it's use.
  *
- * @author schan280
+ * @author Sudiptasish Chanda
  */
 public interface SBPool {
     

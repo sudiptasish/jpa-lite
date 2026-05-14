@@ -13,7 +13,7 @@ import java.util.List;
  * which one element of A may only be linked to one element of B, and vice versa.
  * 
  * <p>
- * JPA-LiTE supports {@link RelAttribute.RelType.OneToOne} query mapping. In which
+ * JPA-LiTE supports {@link jakarta.persistence.OneToOne} query mapping. In which
  * case, it is expected to get exactly one record (or zero in case of left outer
  * join) from the child table. This binder class will then associate the child
  * record (if found) with the parent entry.

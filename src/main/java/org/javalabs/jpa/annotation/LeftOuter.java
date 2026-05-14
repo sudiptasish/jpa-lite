@@ -8,8 +8,13 @@ import static java.lang.annotation.RetentionPolicy.RUNTIME;
 import java.lang.annotation.Target;
 
 /**
+ * Represents a LEFT OUTER join type.
+ * 
+ * <p>
+ * Typically used in query construction to include all records
+ * from the left side of a join.
  *
- * @author schan280
+ * @author Sudiptasish Chanda
  */
 @Documented
 @Target({TYPE, FIELD})

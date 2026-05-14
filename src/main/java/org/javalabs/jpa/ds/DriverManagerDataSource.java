@@ -17,7 +17,7 @@ import org.slf4j.LoggerFactory;
 /**
  * A data source provided by jpa-lite.
  *
- * @author schan280
+ * @author Sudiptasish Chanda
  */
 public class DriverManagerDataSource implements DataSource {
     

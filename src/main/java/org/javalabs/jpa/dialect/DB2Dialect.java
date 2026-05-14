@@ -10,8 +10,12 @@ import java.util.List;
 import java.util.Map;
 
 /**
+ * Dialect implementation for IBM DB2 databases.
+ * 
+ * <p>
+ * Provides DB2-specific SQL generation and configuration.
  *
- * @author schan280
+ * @author Sudiptasish Chanda
  */
 public class DB2Dialect extends AbstractDBDialect {
     

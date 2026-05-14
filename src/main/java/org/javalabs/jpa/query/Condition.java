@@ -3,7 +3,7 @@ package org.javalabs.jpa.query;
 /**
  * Enum to hold the various conditions.
  *
- * @author schan280
+ * @author Sudiptasish Chanda
  */
 public enum Condition {
     

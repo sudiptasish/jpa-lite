@@ -6,7 +6,7 @@ import java.util.List;
 /**
  * Group by expression.
  *
- * @author schan280
+ * @author Sudiptasish Chanda
  */
 public class GroupByExpr extends AbstractExpr {
     

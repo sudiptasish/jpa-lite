@@ -5,7 +5,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 /**
  * Class that represents the buffer to temporarily hold the raw sql query string.
  *
- * @author schan280
+ * @author Sudiptasish Chanda
  */
 public final class QueryBuffer {
     

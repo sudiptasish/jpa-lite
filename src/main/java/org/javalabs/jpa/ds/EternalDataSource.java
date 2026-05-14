@@ -14,7 +14,7 @@ import javax.sql.PooledConnection;
 /**
  * Internal data source.
  *
- * @author schan280
+ * @author Sudiptasish Chanda
  */
 public class EternalDataSource implements ConnectionPoolDataSource {
     

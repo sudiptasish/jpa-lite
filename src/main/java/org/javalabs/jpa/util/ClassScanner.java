@@ -18,8 +18,11 @@ public interface ClassScanner {
      * Attempts to list all the classes in the specified package as determined by
      * the context class loader. 
      * 
-     * @param packageName
+     * @param packageNames
+     * 
      * @return Class[]
+     * @throws java.io.IOException
+     * @throws java.lang.ClassNotFoundException
      */
     List<Class> scan(String[] packageNames) throws IOException, ClassNotFoundException;
 }

@@ -5,7 +5,7 @@ import java.util.List;
 /**
  * Order by expression.
  *
- * @author schan280
+ * @author Sudiptasish Chanda
  */
 public class OrderByExpr extends AbstractExpr {
     

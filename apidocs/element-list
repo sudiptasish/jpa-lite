@@ -1,0 +1,14 @@
+org.javalabs.jpa
+org.javalabs.jpa.annotation
+org.javalabs.jpa.descriptor
+org.javalabs.jpa.dialect
+org.javalabs.jpa.dialect.postgres
+org.javalabs.jpa.ds
+org.javalabs.jpa.entity
+org.javalabs.jpa.mbean
+org.javalabs.jpa.meta
+org.javalabs.jpa.orm.jaxb
+org.javalabs.jpa.query
+org.javalabs.jpa.schema
+org.javalabs.jpa.txn
+org.javalabs.jpa.util

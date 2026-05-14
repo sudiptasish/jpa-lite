@@ -1,8 +1,13 @@
 package org.javalabs.jpa.dialect;
 
 /**
+ * Defines a contract for database dialects.
+ * 
+ * <p>
+ * Provides methods for handling database-specific SQL syntax,
+ * functions, and capabilities.
  *
- * @author schan280
+ * @author Sudiptasish Chanda
  */
 public enum Dialect {
     

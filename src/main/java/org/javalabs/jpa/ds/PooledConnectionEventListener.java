@@ -5,8 +5,15 @@ import javax.sql.ConnectionEvent;
 import javax.sql.ConnectionEventListener;
 
 /**
+ * Listener interface for receiving events related to pooled connection life cycle.
+ * 
+ * <p>
+ * Implementations of this interface can be used to handle events such as
+ * connection creation, acquisition, release, validation failure, or closure.
+ * <p>
+ * Enables decoupled monitoring and management of connection pool behavior.
  *
- * @author schan280
+ * @author Sudiptasish Chanda
  */
 public class PooledConnectionEventListener implements ConnectionEventListener {
 

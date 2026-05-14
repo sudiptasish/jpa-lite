@@ -58,6 +58,7 @@ public class AttributesType {
      * {@link IdType }
      * 
      * 
+     * @return List List of ids.
      */
     public List<IdType> getId() {
         if (id == null) {
@@ -87,6 +88,7 @@ public class AttributesType {
      * {@link BasicType }
      * 
      * 
+     * @return List List of baric types
      */
     public List<BasicType> getBasic() {
         if (basic == null) {

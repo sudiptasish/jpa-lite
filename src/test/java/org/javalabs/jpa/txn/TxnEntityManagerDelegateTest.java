@@ -18,7 +18,7 @@ import org.slf4j.LoggerFactory;
 
 /**
  *
- * @author schan280
+ * @author Sudiptasish Chanda
  */
 @ExtendWith({JPADBExtension.class})
 public class TxnEntityManagerDelegateTest {

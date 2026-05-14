@@ -7,7 +7,7 @@ import java.util.concurrent.atomic.AtomicBoolean;
 /**
  * Implementation of {@link SBPool}.
  *
- * @author schan280
+ * @author Sudiptasish Chanda
  */
 public class SBPoolImpl implements SBPool {
     

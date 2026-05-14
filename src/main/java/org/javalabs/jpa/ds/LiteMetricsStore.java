@@ -6,8 +6,17 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
 
 /**
+ * Stores and manages metrics collected from lightweight components such as
+ * connection pools or data sources.
+ * 
+ * <p>
+ * Provides facilities for recording, aggregating, and retrieving metrics data.
+ * This class may support in-memory storage with optional extensibility for
+ * external monitoring systems.
+ * <p>
+ * Designed for low-overhead metric collection and reporting.
  *
- * @author schan280
+ * @author Sudiptasish Chanda
  */
 public class LiteMetricsStore {
     

@@ -10,8 +10,13 @@ import java.util.List;
 import java.util.Map;
 
 /**
+ * Dialect implementation for Oracle databases.
+ * 
+ * <p>
+ * Provides database-specific SQL generation, syntax rules,
+ * and capabilities tailored for Oracle.
  *
- * @author schan280
+ * @author Sudiptasish Chanda
  */
 public class OracleDialect extends AbstractDBDialect {
     

@@ -2,7 +2,13 @@ package org.javalabs.jpa.meta;
 
 import jakarta.persistence.metamodel.Type;
 import jakarta.persistence.metamodel.Type.PersistenceType;
+
 /**
+ * Base implementation of a type in the persistence metamodel.
+ * 
+ * <p>
+ * Provides common behavior and metadata handling for different
+ * type categories such as basic, entity, and embeddable types.
  *
  * @author Sudiptasish Chanda
  */

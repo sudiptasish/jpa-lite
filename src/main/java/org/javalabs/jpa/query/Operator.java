@@ -7,7 +7,7 @@ package org.javalabs.jpa.query;
  * The operators mentioned here are the representation of the corresponding
  * SQL operator.
  *
- * @author schan280
+ * @author Sudiptasish Chanda
  */
 public enum Operator {
     

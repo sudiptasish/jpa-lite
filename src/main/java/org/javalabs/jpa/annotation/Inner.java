@@ -8,8 +8,13 @@ import static java.lang.annotation.RetentionPolicy.RUNTIME;
 import java.lang.annotation.Target;
 
 /**
+ * Represents an INNER join type.
+ * 
+ * <p>
+ * Used in query construction to return only matching records
+ * between joined entities or tables.
  *
- * @author schan280
+ * @author Sudiptasish Chanda
  */
 @Documented
 @Target({METHOD, FIELD})

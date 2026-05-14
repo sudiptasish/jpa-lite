@@ -17,7 +17,7 @@ import java.util.Map;
  * member of B is linked to only one element of A.
  * 
  * <p>
- * JPA-LiTE supports {@link RelAttribute.RelType.OneToMaany} query mapping. In which
+ * JPA-LiTE supports {@link jakarta.persistence.OneToMany} query mapping. In which
  * case, it is expected to get one or more records (or zero in case of left outer
  * join) from the child table. This binder class will then associate the child
  * records (if found) with the parent entry.
